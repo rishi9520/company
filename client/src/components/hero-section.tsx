@@ -1,7 +1,10 @@
-import { Play, ChevronDown } from 'lucide-react';
+import { Play, ChevronDown, ArrowRight } from 'lucide-react';
+import { useLocation } from 'wouter';
 import logoImage from '@assets/logo_real_1757315406260.png';
 
 export default function HeroSection() {
+  const [, setLocation] = useLocation();
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -51,15 +54,19 @@ export default function HeroSection() {
         
         <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-slide-up" style={{ animationDelay: '0.6s' }}>
           <button 
-            onClick={() => scrollToSection('products')}
-            className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover-lift transition-all duration-300 hover:scale-105"
+            onClick={() => setLocation('/products')}
+            className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-xl font-bold hover-lift transition-all duration-300 hover:scale-105 flex items-center space-x-2"
             data-testid="button-explore-products"
           >
-            Explore Products
+            <span>Explore Products</span>
+            <ArrowRight size={20} />
           </button>
-          <button className="px-8 py-4 glass-morphism text-foreground rounded-lg font-semibold hover-lift transition-all duration-300 hover:scale-105 flex items-center space-x-2">
+          <button 
+            onClick={() => setLocation('/dashboard')}
+            className="px-8 py-4 glass-morphism text-foreground rounded-xl font-bold hover-lift transition-all duration-300 hover:scale-105 flex items-center space-x-2"
+          >
             <Play size={20} />
-            <span>Watch Demo</span>
+            <span>View Dashboard</span>
           </button>
         </div>
         

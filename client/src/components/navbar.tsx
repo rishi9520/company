@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Home, Info, Package, Cpu, Phone, BarChart3 } from 'lucide-react';
+import { useLocation } from 'wouter';
 import logoImage from '@assets/logo_real_1757315406260.png';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [location, setLocation] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +16,11 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const navigateTo = (path: string) => {
+    setLocation(path);
+    setIsMobileMenuOpen(false);
+  };
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -47,40 +54,46 @@ export default function Navbar() {
           
           <div className="hidden md:flex items-center space-x-8">
             <button 
-              onClick={() => scrollToSection('home')} 
-              className="text-foreground hover:text-primary transition-colors"
+              onClick={() => navigateTo('/')} 
+              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${location === '/' ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'}`}
             >
-              Home
+              <Home size={16} />
+              <span>Home</span>
             </button>
             <button 
-              onClick={() => scrollToSection('about')} 
-              className="text-foreground hover:text-primary transition-colors"
+              onClick={() => navigateTo('/about')} 
+              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${location === '/about' ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'}`}
             >
-              About
+              <Info size={16} />
+              <span>About</span>
             </button>
             <button 
-              onClick={() => scrollToSection('products')} 
-              className="text-foreground hover:text-primary transition-colors"
+              onClick={() => navigateTo('/products')} 
+              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${location === '/products' ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'}`}
             >
-              Products
+              <Package size={16} />
+              <span>Products</span>
             </button>
             <button 
-              onClick={() => scrollToSection('technology')} 
-              className="text-foreground hover:text-primary transition-colors"
+              onClick={() => navigateTo('/technology')} 
+              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${location === '/technology' ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'}`}
             >
-              Technology
+              <Cpu size={16} />
+              <span>Technology</span>
             </button>
             <button 
-              onClick={() => scrollToSection('careers')} 
-              className="text-foreground hover:text-primary transition-colors"
+              onClick={() => navigateTo('/dashboard')} 
+              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${location === '/dashboard' ? 'bg-secondary/20 text-secondary' : 'text-foreground hover:text-secondary hover:bg-secondary/10'}`}
             >
-              Careers
+              <BarChart3 size={16} />
+              <span>Dashboard</span>
             </button>
             <button 
-              onClick={() => scrollToSection('contact')} 
-              className="text-foreground hover:text-primary transition-colors"
+              onClick={() => navigateTo('/contact')} 
+              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${location === '/contact' ? 'bg-accent/20 text-accent' : 'text-foreground hover:text-accent hover:bg-accent/10'}`}
             >
-              Contact
+              <Phone size={16} />
+              <span>Contact</span>
             </button>
           </div>
           
@@ -96,14 +109,50 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 glass-morphism p-4 rounded-lg">
+          <div className="md:hidden mt-4 glass-morphism p-6 rounded-2xl">
             <div className="flex flex-col space-y-4">
-              <button onClick={() => scrollToSection('home')} className="text-foreground hover:text-primary transition-colors text-left">Home</button>
-              <button onClick={() => scrollToSection('about')} className="text-foreground hover:text-primary transition-colors text-left">About</button>
-              <button onClick={() => scrollToSection('products')} className="text-foreground hover:text-primary transition-colors text-left">Products</button>
-              <button onClick={() => scrollToSection('technology')} className="text-foreground hover:text-primary transition-colors text-left">Technology</button>
-              <button onClick={() => scrollToSection('careers')} className="text-foreground hover:text-primary transition-colors text-left">Careers</button>
-              <button onClick={() => scrollToSection('contact')} className="text-foreground hover:text-primary transition-colors text-left">Contact</button>
+              <button 
+                onClick={() => navigateTo('/')} 
+                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left ${location === '/' ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'}`}
+              >
+                <Home size={20} />
+                <span>Home</span>
+              </button>
+              <button 
+                onClick={() => navigateTo('/about')} 
+                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left ${location === '/about' ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'}`}
+              >
+                <Info size={20} />
+                <span>About</span>
+              </button>
+              <button 
+                onClick={() => navigateTo('/products')} 
+                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left ${location === '/products' ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'}`}
+              >
+                <Package size={20} />
+                <span>Products</span>
+              </button>
+              <button 
+                onClick={() => navigateTo('/technology')} 
+                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left ${location === '/technology' ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'}`}
+              >
+                <Cpu size={20} />
+                <span>Technology</span>
+              </button>
+              <button 
+                onClick={() => navigateTo('/dashboard')} 
+                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left ${location === '/dashboard' ? 'bg-secondary/20 text-secondary' : 'text-foreground hover:text-secondary hover:bg-secondary/10'}`}
+              >
+                <BarChart3 size={20} />
+                <span>Dashboard</span>
+              </button>
+              <button 
+                onClick={() => navigateTo('/contact')} 
+                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left ${location === '/contact' ? 'bg-accent/20 text-accent' : 'text-foreground hover:text-accent hover:bg-accent/10'}`}
+              >
+                <Phone size={20} />
+                <span>Contact</span>
+              </button>
             </div>
           </div>
         )}

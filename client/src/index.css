@@ -188,7 +188,76 @@
     100% { width: 100%; }
   }
 
+  @keyframes matrix {
+    0% { transform: translateY(-100vh) rotate(0deg); }
+    100% { transform: translateY(100vh) rotate(360deg); }
+  }
+
+  @keyframes pulse3d {
+    0%, 100% { 
+      transform: scale3d(1, 1, 1) rotateY(0deg);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+    }
+    50% { 
+      transform: scale3d(1.05, 1.05, 1.05) rotateY(180deg);
+      box-shadow: 0 0 40px rgba(16, 185, 129, 0.6);
+    }
+  }
+
+  @keyframes float3d {
+    0%, 100% { 
+      transform: translate3d(0, 0, 0) rotate(0deg);
+      opacity: 0.7;
+    }
+    25% { 
+      transform: translate3d(10px, -15px, 5px) rotate(90deg);
+      opacity: 1;
+    }
+    50% { 
+      transform: translate3d(-5px, -25px, -5px) rotate(180deg);
+      opacity: 0.8;
+    }
+    75% { 
+      transform: translate3d(-10px, -10px, 10px) rotate(270deg);
+      opacity: 0.9;
+    }
+  }
+
+  @keyframes hologram {
+    0%, 100% { 
+      opacity: 0.7;
+      filter: hue-rotate(0deg);
+      transform: skewX(0deg);
+    }
+    33% { 
+      opacity: 1;
+      filter: hue-rotate(120deg);
+      transform: skewX(2deg);
+    }
+    66% { 
+      opacity: 0.8;
+      filter: hue-rotate(240deg);
+      transform: skewX(-2deg);
+    }
+  }
+
   .loading-bar {
     animation: loadingBar 2s ease-in-out;
+  }
+
+  .animate-matrix {
+    animation: matrix 10s linear infinite;
+  }
+
+  .animate-pulse3d {
+    animation: pulse3d 3s ease-in-out infinite;
+  }
+
+  .animate-float3d {
+    animation: float3d 8s ease-in-out infinite;
+  }
+
+  .animate-hologram {
+    animation: hologram 4s ease-in-out infinite;
   }
 }
