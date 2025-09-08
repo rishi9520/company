@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Database, Cloud, Brain, Code, Smartphone, Lock } from 'lucide-react';
-import { SiReact, SiPython, SiDocker, SiKubernetes, SiAws, SiPostgresql } from 'react-icons/si';
+import { SiReact, SiPython, SiDocker, SiKubernetes, SiPostgresql } from 'react-icons/si';
 import { useLenis } from '@/hooks/use-lenis';
 
 export default function TechnologyPage() {
@@ -204,7 +204,7 @@ export default function TechnologyPage() {
                   color="bg-gradient-to-br from-blue-600 to-indigo-600"
                 />
                 <TechShowcase
-                  icon={SiAws}
+                  icon={Cloud}
                   name="Amazon Web Services"
                   description="Cloud infrastructure and services"
                   color="bg-gradient-to-br from-orange-500 to-yellow-500"
