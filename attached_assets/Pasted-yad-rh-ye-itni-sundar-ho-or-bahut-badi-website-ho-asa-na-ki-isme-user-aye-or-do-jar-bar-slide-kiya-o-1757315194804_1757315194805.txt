@@ -1,0 +1,122 @@
+yad rh ye itni sundar ho or bahut badi website ho asa na ki isme user aye or do jar bar slide kiya or website khatam yad rhe isme aache se aahca animatioan images video text font lagna isme or abhut kuch dalna apni tarag se licence koi copy right na de sake men tumhe ak detailed prombt de diya hai ok isme lenis ka use karna react js ka ok or animated or fast or beautyfull library ka bhi
+
+20 minutes ago
+I understand you want to create a highly professional and visually stunning website for CODICORE PRIVATE LIMITED that's expansive, engaging, and features premium animations and effects. Based on your detailed requirements, I'll create a plan for a sophisticated corporate website with smooth scrolling, advanced animations, and interactive elements.
+
+Plan
+15 minutes ago
+
+App icon
+CodicorePriva
+Tech stack
+Initial version
+Later
+Agent can work on these tasks after the initial version
+Add CMS integration for easy content updates
+Implement advanced SEO optimization
+Add multi-language support
+Create admin dashboard for content management
+
+Created ./replit.md
+# CODICORE PRIVATE LIMITED - Corporate Website
+
+## Overview
+
+This is a modern, professional corporate website for CODICORE PRIVATE LIMITED, a legally registered technology company in India (CIN: U58200UP2025PTC230810). The website showcases the company's products, services, and capabilities with a focus on their flagship product SkoolHub 2.0 - an automated school management software. The site features a premium design with smooth animations, interactive elements, and a comprehensive presentation of the company's technology stack and offerings.
+
+## User Preferences
+
+Preferred communication style: Simple, everyday language.
+
+## System Architecture
+
+### Frontend Architecture
+- **Framework**: React 18 with TypeScript for type safety and modern component development
+- **Routing**: Wouter for lightweight client-side routing
+- **Build Tool**: Vite for fast development and optimized production builds
+- **UI Framework**: Shadcn/ui components built on Radix UI primitives for accessible, customizable components
+- **Styling**: Tailwind CSS with custom CSS variables for theming and responsive design
+- **State Management**: TanStack Query (React Query) for server state management and caching
+- **Animations**: Custom CSS animations with AOS (Animate On Scroll) library and Lenis.js for smooth scrolling
+
+### Backend Architecture
+- **Runtime**: Node.js with Express.js server framework
+- **Language**: TypeScript with ES modules for modern JavaScript development
+- **Database ORM**: Drizzle ORM configured for PostgreSQL with schema-first approach
+- **Storage Interface**: Abstracted storage layer with in-memory implementation for development and database implementation for production
+- **API Design**: RESTful API structure with centralized route registration
+
+### Design System
+- **Component Library**: Shadcn/ui with "new-york" style variant
+- **Color Palette**: Professional tech-focused colors including deep blue (#0F172A), electric green (#10B981), aqua (#06B6D4), purple (#8B5CF6), black, and white
+- **Typography**: Inter font family with multiple weight variants
+- **Responsive Design**: Mobile-first approach with Tailwind CSS breakpoints
+- **Theme**: Dark theme with glass morphism effects and gradient backgrounds
+
+### Data Management
+- **Database**: PostgreSQL with Drizzle ORM
+- **Schema**: User management with username/password authentication
+- **Migrations**: Drizzle Kit for database schema migrations
+- **Validation**: Zod schemas for runtime type validation
+
+### Development Environment
+- **Package Manager**: npm with lockfile for dependency management
+- **TypeScript Configuration**: Strict mode enabled with path mapping for clean imports
+- **Development Server**: Vite dev server with hot module replacement
+- **Build Process**: Separate client and server builds with ESBuild for server bundling
+
+## External Dependencies
+
+### Core Framework Dependencies
+- **@neondatabase/serverless**: Serverless PostgreSQL driver for database connectivity
+- **drizzle-orm**: Type-safe ORM for database operations and schema management
+- **@tanstack/react-query**: Server state management and data fetching
+- **wouter**: Lightweight React router for client-side navigation
+
+### UI and Animation Libraries
+- **@radix-ui/***: Complete set of accessible UI primitives (accordion, dialog, dropdown, etc.)
+- **@studio-freight/lenis**: Smooth scrolling library for enhanced user experience
+- **aos**: Animate On Scroll library for scroll-triggered animations
+- **class-variance-authority**: Utility for creating variant-based component APIs
+- **clsx & tailwind-merge**: Conditional class name utilities
+
+### Development and Build Tools
+- **vite**: Fast build tool and development server
+- **@vitejs/plugin-react**: React support for Vite
+- **esbuild**: Fast JavaScript bundler for server builds
+- **typescript**: Static type checking and modern JavaScript features
+- **tailwindcss**: Utility-first CSS framework
+- **@replit/vite-plugin-runtime-error-modal**: Development error handling
+- **@replit/vite-plugin-cartographer**: Replit-specific development tooling
+
+### Form and Validation
+- **react-hook-form**: Performant form handling with minimal re-renders
+- **@hookform/resolvers**: Integration between react-hook-form and validation libraries
+- **zod**: TypeScript-first schema validation library
+
+### Database and Storage
+- **drizzle-kit**: Database migration and introspection toolkit
+- **connect-pg-simple**: PostgreSQL session store for Express sessions
+
+### Utilities
+- **date-fns**: Modern JavaScript date utility library
+- **nanoid**: URL-safe unique string ID generator
+- **cmdk**: Command menu component for enhanced user interaction
+
+Took a screenshot
+Screenshot
+Checkpoint made
+11 minutes ago
+Add essential components and structure for a dynamic corporate website
+Screenshot
+Load preview
+Start with a core feature, then add complexity gradually. Building iteratively leads to more reliable results.
+I've built a premium animated corporate website for CODICORE PRIVATE LIMITED with the following features:
+
+✓ Modern tech company design with gradient animations
+✓ Smooth scrolling and GSAP-inspired effects
+✓ Professional color palette (deep blue, electric green, aqua, purple)
+✓ Animated logo and loading screen
+✓ Complete sections: Hero, About, Products, Technology, Clients, Careers, Contact
+
+How does the overall design and functionality look? Are the animations smooth and does the professional tech aesthetic come across well?

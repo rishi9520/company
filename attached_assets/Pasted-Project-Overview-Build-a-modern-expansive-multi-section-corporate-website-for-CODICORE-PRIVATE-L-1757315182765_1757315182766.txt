@@ -1,0 +1,134 @@
+Project Overview
+Build a modern, expansive, multi-section corporate website for "CODICORE PRIVATE LIMITED" — a legally registered tech company in India (CIN: U58200UP2025PTC230810). The website must showcase products (SkoolHub 2.0), company profile, services, technology stack, careers, contact info, and legal certifications.
+
+Technical & Design Requirements
+Framework & Language: React 18 with TypeScript for type safety and scalable codebase.
+
+Routing: Use Wouter or React Router for client-side routing (multi-section SPA, not single page).
+
+Smooth Scrolling: Implement Lenis.js for ultra-smooth and customizable scrolling effects.
+
+Animations: Use AOS (Animate On Scroll), GSAP, or Framer Motion for beautiful entrance effects, hover animations, text animations, and SVG or canvas animations.
+
+Styling: Tailwind CSS with custom CSS variables for branded color theme; implement dark theme with glass morphism and gradient overlays.
+
+Responsive Design: Mobile-first, fully responsive. Tailwind breakpoints for all device sizes.
+
+Performance: Lazy load images/videos, minimize bundle size, optimize animations for smoothness and low CPU use.
+
+Accessibility: All animations and interactions must be accessible, with ARIA labels and keyboard navigation.
+
+Website Structure & Features
+1. Homepage (Hero Section)
+Full-screen introduction with animated logo.
+
+Attractive tagline: “Ideas meet Code. Next-gen software solutions.”
+
+Background animated tech visuals (SVG/canvas/network).
+
+Call to Action buttons with hover and click animations.
+
+2. About Us
+Company story and legal registration details with scanned certificates displayed beautifully.
+
+Timeline section with scroll-triggered animations showing key milestones.
+
+Team member cards with hover animations and popups containing bios.
+
+3. Products & Solutions
+Detailed showcase of flagship product SkoolHub 2.0 with interactive demo video.
+
+Features displayed in cards with icons and animation on scroll.
+
+Solutions customized for education, retail, restaurant sectors.
+
+4. Technology Stack
+Animated infographics showing React.js, Django, AI integration, cloud hosting, and database tech.
+
+Smooth scrolling transitions between technologies.
+
+5. Client Testimonials
+Carousel slider with animated client logos and testimonial quotes.
+
+Video case studies pop-ups with playback animations.
+
+6. Certifications & Trust
+Display Ministry of Corporate Affairs legal documents as modal popups.
+
+Animation highlighting company’s trusted status.
+
+Security badges and partner logos.
+
+7. Careers
+Interactive job listing cards with buttons.
+
+Company culture and vision showcased with video snippets and animated icons.
+
+8. Contact Us
+Animated contact form with validation using react-hook-form and Zod.
+
+Customized styled Google Maps integration.
+
+Quick contact options: WhatsApp, email, phone (animated icons).
+
+9. Footer
+Animated company logo.
+
+Navigation links.
+
+Social media icons with hover animations.
+
+Design & Branding
+Brand colors: Deep blue (#0F172A), electric green (#10B981), aqua (#06B6D4), purple (#8B5CF6), black and white.
+
+Typography: Inter font family, modern, clean, readable with multiple weights.
+
+Use glass morphism effects and subtle shadows for layered depth.
+
+Background gradients and animated SVG shapes for dynamic feel.
+
+Loading animation with company logo to improve perceived performance.
+
+Additional Features to Implement
+Lazy loading for images and videos to speed up page loads.
+
+Dark mode toggle button with smooth CSS transitions.
+
+SEO optimized structure with metadata for social sharing.
+
+Smooth scrollSnapping on key sections.
+
+Floating back-to-top button with animation.
+
+Scroll triggered navigation bar changes (color, shadow).
+
+Development Tools & Libraries
+React 18 + TypeScript
+
+Tailwind CSS for styling
+
+Lenis.js for smooth scrolling
+
+AOS / GSAP / Framer Motion for animations
+
+React Hook Form + Zod for forms
+
+Wouter or React Router for routing
+
+Vite as build tool for development and production
+
+Drizzle ORM with PostgreSQL for backend (optional)
+
+Node.js + Express for API backend (optional)
+
+Inspiration & Reference
+Follow design principles and effects from:
+
+https://webflow.com/made-in-webflow/lenis-scroll
+
+Reference YouTube videos provided
+
+Websites like Apple, Anthropic, Algorand, Robin Radar
+
+Animation-heavy award-winning tech websites from Awwwards.
+
