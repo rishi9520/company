@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Home, Info, Package, Cpu, Phone, BarChart3 } from 'lucide-react';
+import { Menu, X, Home, Info, Package, Cpu, Phone, BarChart3, Users } from 'lucide-react';
 import { useLocation } from 'wouter';
 import logoImage from '@assets/logo_real_1757315406260.png';
 
@@ -82,6 +82,13 @@ export default function Navbar() {
               <span>Technology</span>
             </button>
             <button 
+              onClick={() => navigateTo('/careers')} 
+              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${location === '/careers' ? 'bg-accent/20 text-accent' : 'text-foreground hover:text-accent hover:bg-accent/10'}`}
+            >
+              <Users size={16} />
+              <span>Careers</span>
+            </button>
+            <button 
               onClick={() => navigateTo('/dashboard')} 
               className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${location === '/dashboard' ? 'bg-secondary/20 text-secondary' : 'text-foreground hover:text-secondary hover:bg-secondary/10'}`}
             >
@@ -90,7 +97,7 @@ export default function Navbar() {
             </button>
             <button 
               onClick={() => navigateTo('/contact')} 
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${location === '/contact' ? 'bg-accent/20 text-accent' : 'text-foreground hover:text-accent hover:bg-accent/10'}`}
+              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${location === '/contact' ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'}`}
             >
               <Phone size={16} />
               <span>Contact</span>
@@ -140,6 +147,13 @@ export default function Navbar() {
                 <span>Technology</span>
               </button>
               <button 
+                onClick={() => navigateTo('/careers')} 
+                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left ${location === '/careers' ? 'bg-accent/20 text-accent' : 'text-foreground hover:text-accent hover:bg-accent/10'}`}
+              >
+                <Users size={20} />
+                <span>Careers</span>
+              </button>
+              <button 
                 onClick={() => navigateTo('/dashboard')} 
                 className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left ${location === '/dashboard' ? 'bg-secondary/20 text-secondary' : 'text-foreground hover:text-secondary hover:bg-secondary/10'}`}
               >
@@ -148,7 +162,7 @@ export default function Navbar() {
               </button>
               <button 
                 onClick={() => navigateTo('/contact')} 
-                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left ${location === '/contact' ? 'bg-accent/20 text-accent' : 'text-foreground hover:text-accent hover:bg-accent/10'}`}
+                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left ${location === '/contact' ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'}`}
               >
                 <Phone size={20} />
                 <span>Contact</span>
