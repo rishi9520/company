@@ -1,4 +1,5 @@
 import { Tag, MapPin, Shield } from 'lucide-react';
+import { motion } from 'framer-motion'; // <-- 1. FRAMER MOTION KO IMPORT KIYA
 
 export default function AboutSection() {
   return (
@@ -35,14 +36,20 @@ export default function AboutSection() {
             </div>
           </div>
           
-          <div className="relative">
+          {/* 2. IMAGE KO MOTION.DIV SE WRAP KIYA AUR ANIMATION PROPS ADD KIYE */}
+          <motion.div 
+            className="relative"
+            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
+          >
             <img 
               src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
               alt="Modern office workspace with team collaboration" 
-              className="rounded-2xl shadow-2xl w-full h-auto hover-lift"
+              className="rounded-2xl shadow-2xl w-full h-auto"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent rounded-2xl"></div>
-          </div>
+          </motion.div>
         </div>
         
         {/* Company Registration Details */}

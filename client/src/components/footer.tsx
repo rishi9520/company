@@ -1,5 +1,5 @@
 import { SiLinkedin, SiFacebook, SiYoutube } from 'react-icons/si';
-import logoImage from '@assets/logo_real_1757315406260.png';
+import logoImage from '@assets/logo.png';
 
 export default function Footer() {
   const scrollToSection = (sectionId: string) => {

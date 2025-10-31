@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import logoImage from '@assets/logo_real_1757315406260.png';
+import logoImage from '@assets/logo.png';
 
 export default function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);

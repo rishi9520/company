@@ -3,6 +3,7 @@ import LoadingScreen from '@/components/loading-screen';
 import Navbar from '@/components/navbar';
 import HeroSection from '@/components/hero-section';
 import AboutSection from '@/components/about-section';
+import VideoScroll from '@/components/VideoScroll';
 import ProductsSection from '@/components/products-section';
 import TechnologySection from '@/components/technology-section';
 import TestimonialsSection from '@/components/testimonials-section';
@@ -32,7 +33,7 @@ export default function Home() {
         <ContactSection />
       </main>
 
-      <Footer />
+      {/* <Footer /> */}
       <BackToTop />
     </>
   );

@@ -1,7 +1,9 @@
+// client/src/components/navbar.tsx
+
 import { useState, useEffect } from 'react';
-import { Menu, X, Home, Info, Package, Cpu, Phone, BarChart3, Users } from 'lucide-react';
-import { useLocation } from 'wouter';
-import logoImage from '@assets/logo_real_1757315406260.png';
+import { Menu, X, Home, Info, Package, Cpu, Phone, Users } from 'lucide-react';
+import { useLocation, Link } from 'wouter';
+import logoImage from '@assets/logo.png';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -10,105 +12,55 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
+      setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navigateTo = (path: string) => {
-    setLocation(path);
-    setIsMobileMenuOpen(false);
-  };
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    }
-  };
+  const navLinks = [
+    { href: '/', label: 'Home', icon: Home },
+    { href: '/about', label: 'About', icon: Info },
+    { href: '/products', label: 'Products', icon: Package },
+    { href: '/technology', label: 'Technology', icon: Cpu },
+    { href: '/careers', label: 'Careers', icon: Users },
+    { href: '/contact', label: 'Contact', icon: Phone },
+  ];
 
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled ? 'glass-morphism backdrop-blur-20' : 'glass-morphism'
+        isScrolled ? 'glass-morphism backdrop-blur-xl bg-background/80' : 'bg-transparent'
       }`}
-      style={{
-        background: isScrolled ? 'rgba(15, 23, 42, 0.9)' : 'rgba(255, 255, 255, 0.1)',
-      }}
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-lg flex items-center justify-center overflow-hidden">
-              <img 
-                src={logoImage} 
-                alt="CODICORE Logo" 
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <span className="text-xl font-bold gradient-text">CODICORE</span>
+          <Link href="/">
+            <a className="flex items-center space-x-3 cursor-pointer">
+              <div className="w-25 h-25 rounded-lg flex items-center justify-center overflow-hidden">
+                <img src={logoImage} alt="CODICORE Logo" className="w-20 h-20 object-contain" />
+              </div>
+            
+            </a>
+          </Link>
+          
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-2">
+            {navLinks.map((link) => (
+              <Link key={link.href} href={link.href}>
+                <a className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${
+                  location === link.href ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'
+                }`}>
+                  <link.icon size={16} />
+                  <span>{link.label}</span>
+                </a>
+              </Link>
+            ))}
           </div>
           
-          <div className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => navigateTo('/')} 
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${location === '/' ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'}`}
-            >
-              <Home size={16} />
-              <span>Home</span>
-            </button>
-            <button 
-              onClick={() => navigateTo('/about')} 
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${location === '/about' ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'}`}
-            >
-              <Info size={16} />
-              <span>About</span>
-            </button>
-            <button 
-              onClick={() => navigateTo('/products')} 
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${location === '/products' ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'}`}
-            >
-              <Package size={16} />
-              <span>Products</span>
-            </button>
-            <button 
-              onClick={() => navigateTo('/technology')} 
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${location === '/technology' ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'}`}
-            >
-              <Cpu size={16} />
-              <span>Technology</span>
-            </button>
-            <button 
-              onClick={() => navigateTo('/careers')} 
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${location === '/careers' ? 'bg-accent/20 text-accent' : 'text-foreground hover:text-accent hover:bg-accent/10'}`}
-            >
-              <Users size={16} />
-              <span>Careers</span>
-            </button>
-            <button 
-              onClick={() => navigateTo('/dashboard')} 
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${location === '/dashboard' ? 'bg-secondary/20 text-secondary' : 'text-foreground hover:text-secondary hover:bg-secondary/10'}`}
-            >
-              <BarChart3 size={16} />
-              <span>Dashboard</span>
-            </button>
-            <button 
-              onClick={() => navigateTo('/contact')} 
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${location === '/contact' ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'}`}
-            >
-              <Phone size={16} />
-              <span>Contact</span>
-            </button>
-          </div>
-          
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button 
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-foreground hover:text-primary"
-            >
+            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-foreground hover:text-primary">
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -116,57 +68,18 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 glass-morphism p-6 rounded-2xl">
-            <div className="flex flex-col space-y-4">
-              <button 
-                onClick={() => navigateTo('/')} 
-                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left ${location === '/' ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'}`}
-              >
-                <Home size={20} />
-                <span>Home</span>
-              </button>
-              <button 
-                onClick={() => navigateTo('/about')} 
-                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left ${location === '/about' ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'}`}
-              >
-                <Info size={20} />
-                <span>About</span>
-              </button>
-              <button 
-                onClick={() => navigateTo('/products')} 
-                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left ${location === '/products' ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'}`}
-              >
-                <Package size={20} />
-                <span>Products</span>
-              </button>
-              <button 
-                onClick={() => navigateTo('/technology')} 
-                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left ${location === '/technology' ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'}`}
-              >
-                <Cpu size={20} />
-                <span>Technology</span>
-              </button>
-              <button 
-                onClick={() => navigateTo('/careers')} 
-                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left ${location === '/careers' ? 'bg-accent/20 text-accent' : 'text-foreground hover:text-accent hover:bg-accent/10'}`}
-              >
-                <Users size={20} />
-                <span>Careers</span>
-              </button>
-              <button 
-                onClick={() => navigateTo('/dashboard')} 
-                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left ${location === '/dashboard' ? 'bg-secondary/20 text-secondary' : 'text-foreground hover:text-secondary hover:bg-secondary/10'}`}
-              >
-                <BarChart3 size={20} />
-                <span>Dashboard</span>
-              </button>
-              <button 
-                onClick={() => navigateTo('/contact')} 
-                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left ${location === '/contact' ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'}`}
-              >
-                <Phone size={20} />
-                <span>Contact</span>
-              </button>
+          <div className="md:hidden mt-4 glass-morphism p-4 rounded-2xl">
+            <div className="flex flex-col space-y-2">
+              {navLinks.map((link) => (
+                <Link key={link.href} href={link.href}>
+                  <a onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left ${
+                    location === link.href ? 'bg-primary/20 text-primary' : 'text-foreground hover:text-primary hover:bg-primary/10'
+                  }`}>
+                    <link.icon size={20} />
+                    <span>{link.label}</span>
+                  </a>
+                </Link>
+              ))}
             </div>
           </div>
         )}
