@@ -57,11 +57,11 @@ export default function Navbar() {
                 <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
                 
                 {/* Logo Container */}
-                <div className="relative w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 bg-gradient-to-br from-primary/20 to-secondary/20 backdrop-blur-sm border border-primary/20">
+                <div className="relative w-16 h-16 rounded-2xl flex items-center justify-center overflow-hidden transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 bg-gradient-to-br from-primary/20 to-secondary/20 backdrop-blur-sm border border-primary/20">
                   <img
                     src={logoImage}
                     alt="CODICORE Logo"
-                    className="w-full h-full object-contain p-1.5"
+                    className="w-full h-full object-contain p-2"
                   />
                 </div>
                 

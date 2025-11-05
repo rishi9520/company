@@ -54,12 +54,18 @@ export default function HeroSection() {
           className="container mx-auto px-6 text-center relative z-20"
           style={{ opacity: textOpacity, y: textY }}
         >
-          <div className="logo-container mb-8">
+          <div className="logo-container mb-6">
             <div className="logo-glow"></div>
-            <div className="flex items-center justify-center w-[350px] h-[350px] mx-auto">
+            <div className="flex items-center justify-center w-[500px] h-[500px] mx-auto mb-6">
               <img src={logoImage} alt="CODICORE Logo" className="w-full h-full object-contain" />
             </div>
           </div>
+          
+          {/* Tagline */}
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-gray-200 mb-12 tracking-wide">
+            Where <span className="text-primary font-semibold">Ideas</span> Meet <span className="text-secondary font-semibold">Code</span>
+          </h2>
+          
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
             <button 
               onClick={() => setLocation('/products')} 

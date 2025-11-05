@@ -118,11 +118,11 @@ export default function Footer() {
               <div className="flex items-center space-x-4 group">
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="relative w-16 h-16 rounded-2xl flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 backdrop-blur-sm border border-primary/30 shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-500">
+                  <div className="relative w-20 h-20 rounded-2xl flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 backdrop-blur-sm border border-primary/30 shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-500">
                     <img
                       src={logoImage}
                       alt="CODICORE Logo"
-                      className="w-full h-full object-contain p-2"
+                      className="w-full h-full object-contain p-2.5"
                     />
                   </div>
                   <Sparkles className="absolute -top-1 -right-1 w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse" />
