@@ -18,6 +18,8 @@ import Contact from "@/pages/contact";
 import Dashboard from "@/pages/dashboard";
 import PrivacyPolicy from "@/pages/privacy-policy";
 import Terms from "@/pages/terms";
+import CookiePolicy from "@/pages/cookie-policy";
+import RefundPolicy from "@/pages/refund-policy";
 import NotFound from "@/pages/not-found";
 
 // Shared Layout Component
@@ -97,6 +99,12 @@ function App() {
                 </Route>
                 <Route path="/terms">
                   <PageLayout><Terms /></PageLayout>
+                </Route>
+                <Route path="/cookie-policy">
+                  <PageLayout><CookiePolicy /></PageLayout>
+                </Route>
+                <Route path="/refund-policy">
+                  <PageLayout><RefundPolicy /></PageLayout>
                 </Route>
                 <Route>
                   <NotFound />

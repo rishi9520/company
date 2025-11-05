@@ -275,7 +275,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/cookie-policy"
                     className="text-gray-400 hover:text-primary transition-smooth text-sm flex items-center gap-2 group"
                     data-testid="link-legal-cookie-policy"
                   >
@@ -285,7 +285,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/refund-policy"
                     className="text-gray-400 hover:text-primary transition-smooth text-sm flex items-center gap-2 group"
                     data-testid="link-legal-refund-policy"
                   >
