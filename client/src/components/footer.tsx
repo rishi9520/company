@@ -70,14 +70,14 @@ export default function Footer() {
     },
     { 
       icon: SiInstagram, 
-      href: "#",
+      href: "https://www.instagram.com/rishiagrawal45202/",
       color: "from-pink-600 via-purple-600 to-orange-500",
       hoverColor: "hover:shadow-pink-500/50",
       label: "Instagram"
     },
     { 
       icon: SiX, 
-      href: "#",
+      href: "https://x.com/FirstOf60837",
       color: "from-slate-700 to-slate-900",
       hoverColor: "hover:shadow-slate-500/50",
       label: "X (Twitter)"
@@ -212,18 +212,19 @@ export default function Footer() {
               <ul className="space-y-3">
                 {productLinks.map((item, index) => {
                   let linkHref = "#";
+                  let scrollToTop = true;
                   if (item === "SkoolHub 2.0") {
-                    linkHref = "/products/skoolhub-2.0"; // Assuming this is the correct product page
+                    linkHref = "/products";
                   } else if (item === "Retail Management") {
-                    linkHref = "/products/retail-management"; // Placeholder
+                    linkHref = "/products";
                   } else if (item === "Restaurant Solutions") {
-                    linkHref = "/products/restaurant-solutions"; // Placeholder
+                    linkHref = "/products";
                   } else if (item === "Custom Development") {
-                    linkHref = "/services/custom-development"; // Placeholder
+                    linkHref = "/products";
                   } else if (item === "AI Integration") {
-                    linkHref = "/services/ai-integration"; // Placeholder
+                    linkHref = "/products";
                   } else if (item === "Cloud Services") {
-                    linkHref = "/services/cloud-services"; // Placeholder
+                    linkHref = "/products";
                   }
                   return (
                     <li key={item}>
@@ -314,15 +315,15 @@ export default function Footer() {
                   <span className="text-sm">contact@codicore.com</span>
                 </a>
 
-                <a href="tel:+918954730444" className="flex items-start gap-3 text-gray-400 hover:text-primary transition-smooth group" data-testid="link-contact-phone">
+                <a href="tel:+917599377142" className="flex items-start gap-3 text-gray-400 hover:text-primary transition-smooth group" data-testid="link-contact-phone">
                   <Phone className="w-5 h-5 mt-0.5 group-hover:scale-110 transition-smooth" />
-                  <span className="text-sm">+91 8954730444</span>
+                  <span className="text-sm">+91 7599377142, +91 7819914361</span>
                 </a>
 
                 <div className="flex items-start gap-3 text-gray-400 group" data-testid="text-contact-address">
                   <MapPin className="w-5 h-5 mt-0.5" />
                   <span className="text-sm">
-                    Plot No. 27, Near Sector 15, Noida, Uttar Pradesh 201301, India
+                    JAWAHAR BAJAR B11 BLOCK SADABAD HATHRAS 281306, UTTAR PRADESH
                   </span>
                 </div>
               </div>

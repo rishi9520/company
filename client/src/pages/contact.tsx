@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, Send, MessageCircle, Calendar, Clock } from 'lucide-react';
-import { SiWhatsapp, SiLinkedin, SiFacebook, SiYoutube } from 'react-icons/si';
+import { SiWhatsapp, SiLinkedin, SiFacebook, SiYoutube, SiX, SiInstagram } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -339,15 +339,15 @@ export default function ContactPage() {
               <ContactCard
                 icon={Phone}
                 title="Call Us"
-                details="+91 89547 30444"
-                link="tel:+918954730444"
+                details="+91 7599377142, +91 7819914361"
+                link="tel:+917599377142"
                 delay={0.2}
               />
               
               <ContactCard
                 icon={MapPin}
                 title="Visit Us"
-                details="Bahiyal Moh, Near Krishna, Hanuman Mandir Ke barabar, Saadabad, Hathras-281306, Uttar Pradesh, India"
+                details="JAWAHAR BAJAR B11 BLOCK SADABAD HATHRAS 281306, UTTAR PRADESH"
                 delay={0.3}
               />
 
@@ -406,6 +406,26 @@ export default function ContactPage() {
                     >
                       <SiWhatsapp className="w-6 h-6" />
                       <span className="font-semibold">WhatsApp</span>
+                    </a>
+                    <a 
+                      href="https://x.com/FirstOf60837" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-3 p-4 bg-gradient-to-br from-slate-700 to-slate-900 rounded-2xl text-white hover-lift transition-all duration-300 transform hover:scale-105"
+                      data-testid="link-twitter"
+                    >
+                      <SiX className="w-6 h-6" />
+                      <span className="font-semibold">Twitter</span>
+                    </a>
+                    <a 
+                      href="https://www.instagram.com/rishiagrawal45202/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-3 p-4 bg-gradient-to-br from-pink-600 via-purple-600 to-orange-500 rounded-2xl text-white hover-lift transition-all duration-300 transform hover:scale-105"
+                      data-testid="link-instagram"
+                    >
+                      <SiInstagram className="w-6 h-6" />
+                      <span className="font-semibold">Instagram</span>
                     </a>
                   </div>
                 </div>

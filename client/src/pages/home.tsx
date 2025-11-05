@@ -1,8 +1,8 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Sparkles, Zap, Users, Clock, CheckCircle, Code, Smartphone, Brain, Award, TrendingUp, Target, BookOpen, Lightbulb, Rocket } from 'lucide-react';
+import { ArrowRight, Sparkles, Zap, Users, Clock, CheckCircle, Code, Smartphone, Brain, Award, TrendingUp, Target, BookOpen, Lightbulb, Rocket, Play, Pause, VolumeX, Volume2 } from 'lucide-react';
 import { SiReact, SiDjango, SiPostgresql, SiPython, SiTypescript, SiTailwindcss } from 'react-icons/si';
 import { useLocation } from 'wouter';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import codicoreLogo from '@asset/logo.png';
 import founderPhoto1 from '@assets/rishi-founder.jpg';
 import founderPhoto2 from '@assets/director.jpg';
@@ -11,6 +11,56 @@ import LiveStats from '@/components/live-stats';
 
 export default function Home() {
   const [, setLocation] = useLocation();
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.muted = isMuted;
+      if (isPlaying) {
+        video.play().catch(error => {
+          console.error("Error attempting to play video:", error);
+        });
+      } else {
+        video.pause();
+      }
+    }
+  }, [isPlaying, isMuted]);
+
+  const togglePlayPause = () => {
+    setIsPlaying(!isPlaying);
+  };
+
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
+  };
+
+  const handleProductClick = (productName) => {
+    switch (productName) {
+      case 'SkoolHub 2.0':
+        setLocation('/products');
+        break;
+      case 'Retail Management':
+        setLocation('/retail-management');
+        break;
+      case 'Restaurant Solutions':
+        setLocation('/restaurant-solutions');
+        break;
+      case 'Custom Development':
+        setLocation('/custom-development');
+        break;
+      case 'AI Integration':
+        setLocation('/ai-integration');
+        break;
+      case 'Cloud Services':
+        setLocation('/cloud-services');
+        break;
+      default:
+        setLocation('/products'); // Default to products page if not found
+    }
+  };
 
   return (
     <>
@@ -76,7 +126,7 @@ export default function Home() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <button 
-              onClick={() => setLocation('/products')}
+              onClick={() => handleProductClick('SkoolHub 2.0')}
               className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-xl font-bold hover-lift transition-all duration-300 hover:scale-105 flex items-center space-x-2 shadow-lg shadow-primary/50"
               data-testid="button-explore-products"
             >
@@ -298,6 +348,90 @@ export default function Home() {
             </p>
           </motion.div>
 
+          {/* Product Links */}
+          <div className="grid md:grid-cols-3 gap-8 mb-16 text-center">
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              onClick={() => handleProductClick('Retail Management')}
+              className="glass-morphism p-8 rounded-2xl hover-lift group cursor-pointer"
+              data-testid="card-retail-management"
+            >
+              <div className="w-16 h-16 bg-secondary/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform mx-auto">
+                <TrendingUp className="text-secondary" size={32} />
+              </div>
+              <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">Retail Management</h3>
+              <p className="text-muted-foreground">Solutions for modern retail businesses.</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              onClick={() => handleProductClick('Restaurant Solutions')}
+              className="glass-morphism p-8 rounded-2xl hover-lift group cursor-pointer"
+              data-testid="card-restaurant-solutions"
+            >
+              <div className="w-16 h-16 bg-accent/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform mx-auto">
+                <Award className="text-accent" size={32} />
+              </div>
+              <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">Restaurant Solutions</h3>
+              <p className="text-muted-foreground">Streamline your restaurant operations.</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              onClick={() => handleProductClick('Custom Development')}
+              className="glass-morphism p-8 rounded-2xl hover-lift group cursor-pointer"
+              data-testid="card-custom-development"
+            >
+              <div className="w-16 h-16 bg-destructive/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform mx-auto">
+                <Code className="text-destructive" size={32} />
+              </div>
+              <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">Custom Development</h3>
+              <p className="text-muted-foreground">Tailored software solutions for your needs.</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              onClick={() => handleProductClick('AI Integration')}
+              className="glass-morphism p-8 rounded-2xl hover-lift group cursor-pointer"
+              data-testid="card-ai-integration"
+            >
+              <div className="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform mx-auto">
+                <Brain className="text-primary" size={32} />
+              </div>
+              <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">AI Integration</h3>
+              <p className="text-muted-foreground">Leverage AI for smarter solutions.</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              onClick={() => handleProductClick('Cloud Services')}
+              className="glass-morphism p-8 rounded-2xl hover-lift group cursor-pointer"
+              data-testid="card-cloud-services"
+            >
+              <div className="w-16 h-16 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform mx-auto">
+                <Cloud className="text-blue-500" size={32} />
+              </div>
+              <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">Cloud Services</h3>
+              <p className="text-muted-foreground">Scalable and reliable cloud infrastructure.</p>
+            </motion.div>
+          </div>
+
+
           {/* Problem - Solution Cards */}
           <div className="grid md:grid-cols-2 gap-8 mb-16">
             {/* Problem Card */}
@@ -385,19 +519,34 @@ export default function Home() {
               See <span className="gradient-text">SkoolHub 2.0</span> in Action!
             </h3>
             <div className="max-w-4xl mx-auto overflow-hidden rounded-3xl shadow-2xl border-2 border-primary/30" data-testid="video-container">
-              <video 
-                autoPlay 
-                muted 
-                loop 
-                playsInline
-                loading="lazy"
-                preload="metadata"
-                className="w-full h-full object-cover rounded-2xl shadow-2xl"
-                data-testid="video-skoolhub-promo"
-              >
-                <source src="/src/assets/skoolhub-promo.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <div className="relative aspect-video">
+                <div className="absolute -inset-4 bg-primary/20 rounded-3xl blur-2xl animate-pulse-slow"></div>
+                <video 
+                  ref={videoRef}
+                  src="/src/assets/skoolhub-promo.mp4" 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline 
+                  className="relative rounded-2xl shadow-2xl w-full h-full object-cover" 
+                />
+                <div className="absolute bottom-4 right-4 flex gap-2">
+                  <button
+                    onClick={togglePlayPause}
+                    className="p-3 bg-black/50 hover:bg-black/70 rounded-full backdrop-blur-sm transition-all"
+                    aria-label={isPlaying ? "Pause" : "Play"}
+                  >
+                    {isPlaying ? <Pause className="w-5 h-5 text-white" /> : <Play className="w-5 h-5 text-white" />}
+                  </button>
+                  <button
+                    onClick={toggleMute}
+                    className="p-3 bg-black/50 hover:bg-black/70 rounded-full backdrop-blur-sm transition-all"
+                    aria-label={isMuted ? "Unmute" : "Mute"}
+                  >
+                    {isMuted ? <VolumeX className="w-5 h-5 text-white" /> : <Volume2 className="w-5 h-5 text-white" />}
+                  </button>
+                </div>
+              </div>
             </div>
           </motion.div>
 
@@ -778,6 +927,58 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* Footer Section */}
+      <footer className="py-16 bg-background border-t border-muted/30">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-4 gap-12">
+            {/* Logo and Description */}
+            <div className="col-span-1 md:col-span-2">
+              <img src={codicoreLogo} alt="CODICORE Logo" className="w-32 mb-4" />
+              <p className="text-muted-foreground text-sm mb-4">
+                CODICORE PRIVATE LIMITED: Simplifying the complex. Building intelligent software that transforms business chaos into harmony.
+              </p>
+              {/* Social Icons */}
+              <div className="flex space-x-4">
+                <a href="https://x.com/FirstOf60837" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                  <X className="w-6 h-6 text-muted-foreground hover:text-primary transition-colors" />
+                </a>
+                <a href="https://www.instagram.com/rishiagrawal45202/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <Instagram className="w-6 h-6 text-muted-foreground hover:text-primary transition-colors" />
+                </a>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="text-xl font-bold mb-6">Quick Links</h4>
+              <ul className="space-y-3 text-muted-foreground">
+                <li><a href="#home" className="hover:text-primary transition-colors">Home</a></li>
+                <li><a href="#about" className="hover:text-primary transition-colors">About Us</a></li>
+                <li><a href="#products" className="hover:text-primary transition-colors">Products</a></li>
+                <li><a href="#services" className="hover:text-primary transition-colors">Services</a></li>
+                <li><a href="#contact" className="hover:text-primary transition-colors">Contact</a></li>
+              </ul>
+            </div>
+
+            {/* Contact Information */}
+            <div>
+              <h4 className="text-xl font-bold mb-6">Contact Us</h4>
+              <div className="text-sm text-muted-foreground space-y-3">
+                <p>JAWAHAR BAJAR B11 BLOCK SADABAD HATHRAS 281306, UTTAR PRADESH</p>
+                <p><strong>Phone:</strong> <a href="tel:7599377142" className="hover:text-primary transition-colors">7599377142</a></p>
+                <p><strong>Alternate Phone:</strong> <a href="tel:7819914361" className="hover:text-primary transition-colors">7819914361</a></p>
+                <p><strong>Email:</strong> <a href="mailto:info@codicore.in" className="hover:text-primary transition-colors">info@codicore.in</a></p>
+              </div>
+            </div>
+          </div>
+
+          {/* Copyright */}
+          <div className="mt-12 pt-8 border-t border-muted/30 text-center text-muted-foreground text-sm">
+            © 2024 CODICORE PRIVATE LIMITED. All rights reserved.
+          </div>
+        </div>
+      </footer>
     </>
   );
 }
