@@ -96,6 +96,8 @@ export default function Footer() {
     { label: "About Us", action: () => scrollToSection("about") },
     { label: "Careers", action: () => scrollToSection("careers") },
     { label: "Technology", action: () => scrollToSection("technology") },
+    { label: "Blog", href: "/blog" },
+    { label: "FAQ", href: "/faq" },
     { label: "Contact Us", action: () => scrollToSection("contact") }
   ];
 
@@ -232,15 +234,27 @@ export default function Footer() {
               <ul className="space-y-3">
                 {companyLinks.map((link, index) => (
                   <li key={link.label}>
-                    <button
-                      onClick={link.action}
-                      className="text-gray-400 hover:text-primary transition-smooth text-sm flex items-center gap-2 group"
-                      style={{ animationDelay: `${index * 50}ms` }}
-                      data-testid={`button-company-${link.label.toLowerCase().replace(/ /g, '-')}`}
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-primary transition-smooth"></span>
-                      <span className="group-hover:translate-x-1 transition-smooth">{link.label}</span>
-                    </button>
+                    {link.href ? (
+                      <a
+                        href={link.href}
+                        className="text-gray-400 hover:text-primary transition-smooth text-sm flex items-center gap-2 group"
+                        style={{ animationDelay: `${index * 50}ms` }}
+                        data-testid={`link-company-${link.label.toLowerCase().replace(/ /g, '-')}`}
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-primary transition-smooth"></span>
+                        <span className="group-hover:translate-x-1 transition-smooth">{link.label}</span>
+                      </a>
+                    ) : (
+                      <button
+                        onClick={link.action}
+                        className="text-gray-400 hover:text-primary transition-smooth text-sm flex items-center gap-2 group"
+                        style={{ animationDelay: `${index * 50}ms` }}
+                        data-testid={`button-company-${link.label.toLowerCase().replace(/ /g, '-')}`}
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-primary transition-smooth"></span>
+                        <span className="group-hover:translate-x-1 transition-smooth">{link.label}</span>
+                      </button>
+                    )}
                   </li>
                 ))}
               </ul>

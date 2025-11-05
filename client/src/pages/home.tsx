@@ -7,6 +7,7 @@ import codicoreLogo from '@asset/logo.png';
 import founderPhoto1 from '@assets/rishi-founder.jpg';
 import founderPhoto2 from '@assets/director.jpg';
 import TypingText from '@/components/typing-text';
+import LiveStats from '@/components/live-stats';
 
 export default function Home() {
   const [, setLocation] = useLocation();
@@ -695,6 +696,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Live Stats Section */}
+      <LiveStats />
 
       {/* Vision & Future Section */}
       <section className="py-20 md:py-32 bg-muted/30 relative overflow-hidden" data-testid="section-vision">
