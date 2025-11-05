@@ -114,7 +114,7 @@ export default function Home() {
               <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text" data-testid="text-founder-name">
                 Rishi Agrawal
               </h2>
-              
+
               <p className="text-xl text-foreground/80 mb-4" data-testid="text-founder-age">
                 <strong>17 years old</strong> • 12th Grade Student • Tech Entrepreneur
               </p>
@@ -131,7 +131,7 @@ export default function Home() {
               </p>
 
               <div className="flex flex-wrap gap-3">
-                <div className="flex items-center space-x-2 bg-accent/20 text-accent px-4 py-2 rounded-lg" data-testid="badge-achievement-1">
+                <div className="flex items-center space-x-2 bg-accent/20 text-secondary px-4 py-2 rounded-lg" data-testid="badge-achievement-1">
                   <CheckCircle size={18} />
                   <span>Company Incorporated at 17</span>
                 </div>
@@ -287,11 +287,11 @@ export default function Home() {
             <h2 className="text-5xl md:text-6xl font-bold mb-6" data-testid="text-product-name">
               <span className="gradient-text">SkoolHub 2.0</span>
             </h2>
-            
+
             <p className="text-2xl text-foreground/80 mb-4">
               The Ultimate School Management Ecosystem
             </p>
-            
+
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               AI-Powered Automatic Teacher Arrangement System with Real-time WhatsApp Notifications
             </p>
@@ -373,6 +373,33 @@ export default function Home() {
             </motion.div>
           </div>
 
+          {/* Video Showcase */}
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            className="mb-16 text-center"
+          >
+            <h3 className="text-3xl font-bold mb-8" data-testid="text-video-title">
+              See <span className="gradient-text">SkoolHub 2.0</span> in Action!
+            </h3>
+            <div className="max-w-4xl mx-auto overflow-hidden rounded-3xl shadow-2xl border-2 border-primary/30" data-testid="video-container">
+              <video 
+                autoPlay 
+                muted 
+                loop 
+                playsInline
+                loading="lazy"
+                preload="metadata"
+                className="w-full h-full object-cover rounded-2xl shadow-2xl"
+                data-testid="video-skoolhub-promo"
+              >
+                <source src="/src/assets/skoolhub-promo.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </motion.div>
+
           {/* Key Features Grid */}
           <motion.div
             initial={{ y: 50, opacity: 0 }}
@@ -381,7 +408,7 @@ export default function Home() {
             className="mb-16"
           >
             <h3 className="text-3xl font-bold text-center mb-12" data-testid="text-features-title">Key Features</h3>
-            
+
             <div className="grid md:grid-cols-3 gap-6">
               {[
                 { icon: Brain, title: 'Auto Arrangement', desc: 'AI finds perfect substitute in <1 second', color: 'primary' },
@@ -449,11 +476,11 @@ export default function Home() {
               <Lightbulb size={20} />
               <span className="font-semibold">How It Works</span>
             </div>
-            
+
             <h2 className="text-4xl md:text-5xl font-bold mb-6" data-testid="text-how-it-works-title">
               From <span className="gradient-text">Chaos</span> to <span className="gradient-text">Clarity</span>
             </h2>
-            
+
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               See how SkoolHub 2.0 transforms teacher arrangement in 4 simple steps
             </p>
@@ -503,7 +530,7 @@ export default function Home() {
                 >
                   <div className="glass-morphism p-8 rounded-2xl h-full hover-lift group relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl group-hover:scale-150 transition-transform"></div>
-                    
+
                     <div className="relative z-10">
                       <div className="flex items-center justify-between mb-6">
                         <div className={`w-16 h-16 bg-${step.color}/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
@@ -537,7 +564,7 @@ export default function Home() {
               <div className="text-6xl font-bold text-destructive mb-4">30+ min</div>
               <p className="text-muted-foreground">Wasted time daily finding substitutes</p>
             </div>
-            
+
             <div className="glass-morphism p-8 rounded-2xl text-center border-2 border-primary/30" data-testid="card-automated-process">
               <div className="text-primary text-xl font-bold mb-4">✅ With SkoolHub 2.0</div>
               <div className="text-6xl font-bold text-primary mb-4">&lt;1 sec</div>
@@ -560,11 +587,11 @@ export default function Home() {
               <BookOpen size={20} />
               <span className="font-semibold">Insights & Information</span>
             </div>
-            
+
             <h2 className="text-4xl md:text-5xl font-bold mb-6" data-testid="text-blog-title">
               Learn More About <span className="gradient-text">Automation</span>
             </h2>
-            
+
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Discover how SkoolHub 2.0 is revolutionizing school management
             </p>
@@ -681,7 +708,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-bold mb-8" data-testid="text-vision-title">
               Our <span className="gradient-text">Vision</span> for the Future
             </h2>
-            
+
             <p className="text-xl text-foreground/80 mb-6">
               "To simplify the complex. To build intelligent software that works silently in the background, 
               transforming business chaos into harmony."
@@ -722,7 +749,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6" data-testid="text-cta-title">
               Ready to <span className="gradient-text">Transform</span> Your School?
             </h2>
-            
+
             <p className="text-xl text-muted-foreground mb-12">
               Join the schools that have already automated their teacher arrangements with SkoolHub 2.0
             </p>
