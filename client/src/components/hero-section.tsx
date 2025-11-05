@@ -13,7 +13,7 @@ export default function HeroSection() {
   const targetRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true); 
-  const [isMuted, setIsMuted] = useState(true); // 🔊 default: muted
+  const [isMuted, setIsMuted] = useState(true);
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -46,45 +46,59 @@ export default function HeroSection() {
   };
 
   return (
-    <section ref={targetRef} id="home" className="h-[300vh] relative bg-background">
+    <section ref={targetRef} id="home" className="h-[300vh] relative">
       <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden">
         
-        {/* ========== Text + Buttons ========== */}
+        {/* Content Container */}
         <motion.div 
-          className="container mx-auto px-6 text-center relative z-20"
+          className="container max-w-7xl mx-auto px-6 text-center relative z-20"
           style={{ opacity: textOpacity, y: textY }}
         >
-          <div className="logo-container mb-6">
+          {/* Logo */}
+          <div className="logo-container mb-12">
             <div className="logo-glow"></div>
-            <div className="flex items-center justify-center w-[500px] h-[500px] mx-auto mb-6">
-              <img src={logoImage} alt="CODICORE Logo" className="w-full h-full object-contain" />
+            <div className="flex items-center justify-center w-[360px] h-[360px] md:w-[480px] md:h-[480px] mx-auto">
+              <img 
+                src={logoImage} 
+                alt="CODICORE Logo" 
+                className="w-full h-full object-contain drop-shadow-2xl"
+                data-testid="img-hero-logo"
+              />
             </div>
           </div>
           
+          {/* Main Heading - Company Name */}
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8 gradient-text tracking-tight">
+            CODICORE
+          </h1>
+          
           {/* Tagline */}
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-gray-200 mb-12 tracking-wide">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-300 mb-16 tracking-wide max-w-3xl mx-auto">
             Where <span className="text-primary font-semibold">Ideas</span> Meet <span className="text-secondary font-semibold">Code</span>
           </h2>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
             <button 
               onClick={() => setLocation('/products')} 
-              className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-xl font-bold hover-lift transition-all duration-300 hover:scale-105 flex items-center space-x-2"
+              className="px-10 py-5 bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%] hover:bg-[position:100%_0] text-white text-lg font-semibold rounded-2xl transition-smooth hover:scale-105 hover:shadow-2xl hover:shadow-primary/30 flex items-center gap-3"
+              data-testid="button-explore-products"
             >
               <span>Explore Products</span>
-              <ArrowRight size={20} />
+              <ArrowRight size={22} />
             </button>
             <button 
               onClick={() => setLocation('/dashboard')} 
-              className="px-8 py-4 glass-morphism text-foreground rounded-xl font-bold hover-lift transition-all duration-300 hover:scale-105 flex items-center space-x-2"
+              className="px-10 py-5 glass-card text-foreground text-lg font-semibold rounded-2xl transition-smooth hover:scale-105 flex items-center gap-3"
+              data-testid="button-view-dashboard"
             >
-              <Play size={20} />
+              <Play size={22} />
               <span>View Dashboard</span>
             </button>
           </div>
         </motion.div>
 
-        {/* ========== Background Video ========== */}
+        {/* Background Video */}
         <motion.div 
           className="absolute inset-0 z-0 flex items-center justify-center"
           style={{ opacity: videoOpacity }}
@@ -99,35 +113,37 @@ export default function HeroSection() {
             playsInline
             style={{ scale: videoScale }}
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background/80"></div>
         </motion.div>
 
-        {/* ========== Play / Pause Button ========== */}
+        {/* Video Controls */}
         <motion.div 
           className="absolute bottom-8 right-8 z-30 flex gap-4"
           style={{ opacity: videoOpacity }}
         >
           <button 
             onClick={togglePlayPause}
-            className="w-14 h-14 glass-morphism rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all"
+            className="w-14 h-14 glass-morphism rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-fast hover:scale-110"
+            data-testid="button-video-play-pause"
           >
             {isPlaying ? <Pause size={24} /> : <Play size={24} />}
           </button>
 
-          {/* 🔊 Mute / Unmute Button */}
           <button 
             onClick={toggleMute}
-            className="w-14 h-14 glass-morphism rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all"
+            className="w-14 h-14 glass-morphism rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-fast hover:scale-110"
+            data-testid="button-video-mute"
           >
             {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
           </button>
         </motion.div>
 
-        {/* ========== Scroll Indicator ========== */}
+        {/* Scroll Indicator */}
         <motion.div 
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
           style={{ opacity: textOpacity }}
         >
-          <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center items-start pt-2">
+          <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center items-start pt-2 animate-pulse-slow">
             <ChevronDown className="w-4 h-4 text-primary animate-bounce" />
           </div>
         </motion.div>

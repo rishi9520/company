@@ -101,7 +101,7 @@ export default function Footer() {
   const legalLinks = ["Privacy Policy", "Terms of Service", "Cookie Policy", "Refund Policy"];
 
   return (
-    <footer className="relative bg-gradient-to-b from-slate-950 via-black to-black border-t border-white/10 overflow-hidden">
+    <footer className="relative bg-gradient-to-b from-background via-card to-background border-t border-white/10 overflow-hidden">
       {/* Animated Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse"></div>
@@ -109,29 +109,30 @@ export default function Footer() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary/5 to-secondary/5 rounded-full blur-[150px]"></div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container max-w-7xl mx-auto px-6 relative z-10">
         {/* Top Section with Newsletter */}
         <div className="py-16 border-b border-white/10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Brand & Description */}
             <div className="space-y-6">
-              <div className="flex items-center space-x-4 group">
+              <div className="flex items-center gap-4 group">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="relative w-20 h-20 rounded-2xl flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 backdrop-blur-sm border border-primary/30 shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-500">
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-2xl blur-lg opacity-60 group-hover:opacity-100 transition-smooth"></div>
+                  <div className="relative w-24 h-24 rounded-2xl flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary/15 to-secondary/15 backdrop-blur-sm border border-white/10 shadow-lg shadow-primary/20 group-hover:scale-110 transition-smooth">
                     <img
                       src={logoImage}
                       alt="CODICORE Logo"
-                      className="w-full h-full object-contain p-2.5"
+                      className="w-full h-full object-contain p-3"
+                      data-testid="img-footer-logo"
                     />
                   </div>
-                  <Sparkles className="absolute -top-1 -right-1 w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse" />
+                  <Sparkles className="absolute -top-1 -right-1 w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-smooth animate-pulse" />
                 </div>
                 <div>
-                  <h3 className="text-3xl font-bold bg-gradient-to-r from-white via-primary to-secondary bg-clip-text text-transparent">
+                  <h3 className="text-3xl font-bold gradient-text">
                     CODICORE
                   </h3>
-                  <p className="text-xs text-gray-400 tracking-widest uppercase mt-1">
+                  <p className="text-[10px] text-muted-foreground tracking-[0.2em] uppercase mt-1">
                     Private Limited
                   </p>
                 </div>
@@ -151,7 +152,7 @@ export default function Footer() {
             </div>
 
             {/* Newsletter Subscription */}
-            <div className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-xl rounded-2xl p-8 border border-white/10 shadow-2xl hover:shadow-primary/10 transition-all duration-500 group">
+            <div className="glass-card rounded-2xl p-8 shadow-2xl hover:shadow-primary/20 transition-smooth">
               <div className="flex items-center gap-2 mb-4">
                 <Mail className="w-6 h-6 text-primary" />
                 <h4 className="text-xl font-bold text-white">Stay Updated</h4>
@@ -170,16 +171,18 @@ export default function Footer() {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your email"
                       required
-                      className="w-full px-5 py-3.5 bg-black/40 border border-white/20 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all duration-300"
+                      className="w-full px-5 py-3.5 bg-black/40 border border-white/20 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-smooth"
+                      data-testid="input-newsletter-email"
                     />
                   </div>
                   
                   <button
                     type="submit"
-                    className="px-6 py-3.5 bg-gradient-to-r from-primary to-secondary rounded-xl text-white font-semibold hover:shadow-lg hover:shadow-primary/50 hover:scale-105 transition-all duration-300 flex items-center gap-2 group/btn"
+                    className="px-6 py-3.5 bg-gradient-to-r from-primary to-secondary rounded-xl text-white font-semibold hover:shadow-lg hover:shadow-primary/50 hover:scale-105 transition-smooth flex items-center gap-2 group/btn"
+                    data-testid="button-newsletter-submit"
                   >
                     <span className="hidden sm:inline">Subscribe</span>
-                    <Send className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                    <Send className="w-4 h-4 group-hover/btn:translate-x-1 transition-smooth" />
                   </button>
                 </div>
                 
@@ -207,11 +210,12 @@ export default function Footer() {
                   <li key={item}>
                     <a
                       href="#"
-                      className="text-gray-400 hover:text-primary transition-all duration-300 text-sm flex items-center gap-2 group"
+                      className="text-gray-400 hover:text-primary transition-smooth text-sm flex items-center gap-2 group"
                       style={{ animationDelay: `${index * 50}ms` }}
+                      data-testid={`link-product-${item.toLowerCase().replace(/ /g, '-')}`}
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-primary transition-colors duration-300"></span>
-                      <span className="group-hover:translate-x-1 transition-transform duration-300">{item}</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-primary transition-smooth"></span>
+                      <span className="group-hover:translate-x-1 transition-smooth">{item}</span>
                     </a>
                   </li>
                 ))}
@@ -229,11 +233,12 @@ export default function Footer() {
                   <li key={link.label}>
                     <button
                       onClick={link.action}
-                      className="text-gray-400 hover:text-primary transition-all duration-300 text-sm flex items-center gap-2 group"
+                      className="text-gray-400 hover:text-primary transition-smooth text-sm flex items-center gap-2 group"
                       style={{ animationDelay: `${index * 50}ms` }}
+                      data-testid={`button-company-${link.label.toLowerCase().replace(/ /g, '-')}`}
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-primary transition-colors duration-300"></span>
-                      <span className="group-hover:translate-x-1 transition-transform duration-300">{link.label}</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-primary transition-smooth"></span>
+                      <span className="group-hover:translate-x-1 transition-smooth">{link.label}</span>
                     </button>
                   </li>
                 ))}
@@ -251,11 +256,12 @@ export default function Footer() {
                   <li key={item}>
                     <a
                       href="#"
-                      className="text-gray-400 hover:text-primary transition-all duration-300 text-sm flex items-center gap-2 group"
+                      className="text-gray-400 hover:text-primary transition-smooth text-sm flex items-center gap-2 group"
                       style={{ animationDelay: `${index * 50}ms` }}
+                      data-testid={`link-legal-${item.toLowerCase().replace(/ /g, '-')}`}
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-primary transition-colors duration-300"></span>
-                      <span className="group-hover:translate-x-1 transition-transform duration-300">{item}</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-primary transition-smooth"></span>
+                      <span className="group-hover:translate-x-1 transition-smooth">{item}</span>
                     </a>
                   </li>
                 ))}
@@ -271,17 +277,17 @@ export default function Footer() {
               
               {/* Contact Info */}
               <div className="space-y-4 mb-6">
-                <a href="mailto:contact@codicore.com" className="flex items-start gap-3 text-gray-400 hover:text-primary transition-colors duration-300 group">
-                  <Mail className="w-5 h-5 mt-0.5 group-hover:scale-110 transition-transform duration-300" />
+                <a href="mailto:contact@codicore.com" className="flex items-start gap-3 text-gray-400 hover:text-primary transition-smooth group" data-testid="link-contact-email">
+                  <Mail className="w-5 h-5 mt-0.5 group-hover:scale-110 transition-smooth" />
                   <span className="text-sm">contact@codicore.com</span>
                 </a>
                 
-                <a href="tel:+91" className="flex items-start gap-3 text-gray-400 hover:text-primary transition-colors duration-300 group">
-                  <Phone className="w-5 h-5 mt-0.5 group-hover:scale-110 transition-transform duration-300" />
+                <a href="tel:+91" className="flex items-start gap-3 text-gray-400 hover:text-primary transition-smooth group" data-testid="link-contact-phone">
+                  <Phone className="w-5 h-5 mt-0.5 group-hover:scale-110 transition-smooth" />
                   <span className="text-sm">+91 XXX XXX XXXX</span>
                 </a>
                 
-                <div className="flex items-start gap-3 text-gray-400 group">
+                <div className="flex items-start gap-3 text-gray-400 group" data-testid="text-contact-address">
                   <MapPin className="w-5 h-5 mt-0.5" />
                   <span className="text-sm">Uttar Pradesh, India</span>
                 </div>
@@ -297,12 +303,13 @@ export default function Footer() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`relative w-11 h-11 bg-gradient-to-br ${social.color} rounded-xl flex items-center justify-center hover:scale-110 hover:shadow-xl ${social.hoverColor} transition-all duration-300 group`}
+                      className={`relative w-11 h-11 bg-gradient-to-br ${social.color} rounded-xl flex items-center justify-center hover:scale-110 hover:shadow-xl ${social.hoverColor} transition-smooth group`}
                       title={social.label}
                       style={{ animationDelay: `${index * 100}ms` }}
+                      data-testid={`link-social-${social.label.toLowerCase().replace(/\s/g, '-')}`}
                     >
                       <social.icon className="w-5 h-5 text-white relative z-10" />
-                      <ExternalLink className="absolute -top-1 -right-1 w-3 h-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <ExternalLink className="absolute -top-1 -right-1 w-3 h-3 text-white opacity-0 group-hover:opacity-100 transition-smooth" />
                     </a>
                   ))}
                 </div>
@@ -330,10 +337,11 @@ export default function Footer() {
               {/* Scroll to Top Button */}
               <button
                 onClick={scrollToTop}
-                className="w-10 h-10 bg-gradient-to-br from-primary/20 to-secondary/20 backdrop-blur-sm border border-primary/30 rounded-xl flex items-center justify-center hover:scale-110 hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 group"
+                className="w-10 h-10 bg-gradient-to-br from-primary/20 to-secondary/20 backdrop-blur-sm border border-primary/30 rounded-xl flex items-center justify-center hover:scale-110 hover:shadow-lg hover:shadow-primary/50 transition-smooth group"
                 aria-label="Scroll to top"
+                data-testid="button-scroll-to-top"
               >
-                <ArrowUp className="w-5 h-5 text-primary group-hover:translate-y-[-2px] transition-transform duration-300" />
+                <ArrowUp className="w-5 h-5 text-primary group-hover:translate-y-[-2px] transition-smooth" />
               </button>
             </div>
           </div>
