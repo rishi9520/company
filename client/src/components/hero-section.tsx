@@ -4,7 +4,7 @@ import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ChevronDown, ArrowRight, Play, Pause, Volume2, VolumeX } from 'lucide-react';
 import { useLocation } from 'wouter';
-import logoImage from '@assets/logo.png';
+import logoImage from '@asset/logo.png';
 
 const videoUrl = "/videos/skoolhub-promo.mp4"; 
 
@@ -56,7 +56,7 @@ export default function HeroSection() {
         >
           <div className="logo-container mb-8">
             <div className="logo-glow"></div>
-            <div className="w-48 h-48 mx-auto rounded-3xl flex items-center justify-center relative z-10 hover-lift overflow-hidden">
+            <div className="flex items-center justify-center w-[350px] h-[350px] mx-auto">
               <img src={logoImage} alt="CODICORE Logo" className="w-full h-full object-contain" />
             </div>
           </div>
