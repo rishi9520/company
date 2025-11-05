@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Sparkles, Zap, Users, Clock, CheckCircle, Code, Smartphone, Brain, Award, TrendingUp, Target, BookOpen, Lightbulb, Rocket, Play, Pause, VolumeX, Volume2 } from 'lucide-react';
+import { ArrowRight, Sparkles, Zap, Users, Clock, CheckCircle, Code, Smartphone, Brain, Award, TrendingUp, Target, BookOpen, Lightbulb, Rocket, Play, Pause, VolumeX, Volume2, Cloud } from 'lucide-react';
 import { SiReact, SiDjango, SiPostgresql, SiPython, SiTypescript, SiTailwindcss } from 'react-icons/si';
 import { useLocation } from 'wouter';
 import { useRef, useState, useEffect } from 'react';
