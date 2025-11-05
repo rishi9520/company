@@ -16,6 +16,8 @@ import Technology from "@/pages/technology";
 import Careers from "@/pages/careers";
 import Contact from "@/pages/contact";
 import Dashboard from "@/pages/dashboard";
+import PrivacyPolicy from "@/pages/privacy-policy";
+import Terms from "@/pages/terms";
 import NotFound from "@/pages/not-found";
 
 // Shared Layout Component
@@ -89,6 +91,12 @@ function App() {
                 </Route>
                 <Route path="/dashboard">
                   <PageLayout><Dashboard /></PageLayout>
+                </Route>
+                <Route path="/privacy-policy">
+                  <PageLayout><PrivacyPolicy /></PageLayout>
+                </Route>
+                <Route path="/terms">
+                  <PageLayout><Terms /></PageLayout>
                 </Route>
                 <Route>
                   <NotFound />

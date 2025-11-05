@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "wouter";
 import { 
   SiLinkedin, 
   SiFacebook, 
@@ -252,19 +253,46 @@ export default function Footer() {
                 Legal
               </h4>
               <ul className="space-y-3">
-                {legalLinks.map((item, index) => (
-                  <li key={item}>
-                    <a
-                      href="#"
-                      className="text-gray-400 hover:text-primary transition-smooth text-sm flex items-center gap-2 group"
-                      style={{ animationDelay: `${index * 50}ms` }}
-                      data-testid={`link-legal-${item.toLowerCase().replace(/ /g, '-')}`}
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-primary transition-smooth"></span>
-                      <span className="group-hover:translate-x-1 transition-smooth">{item}</span>
-                    </a>
-                  </li>
-                ))}
+                <li>
+                  <a
+                    href="/privacy-policy"
+                    className="text-gray-400 hover:text-primary transition-smooth text-sm flex items-center gap-2 group"
+                    data-testid="link-legal-privacy-policy"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-primary transition-smooth"></span>
+                    <span className="group-hover:translate-x-1 transition-smooth">Privacy Policy</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/terms"
+                    className="text-gray-400 hover:text-primary transition-smooth text-sm flex items-center gap-2 group"
+                    data-testid="link-legal-terms-of-service"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-primary transition-smooth"></span>
+                    <span className="group-hover:translate-x-1 transition-smooth">Terms of Service</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-primary transition-smooth text-sm flex items-center gap-2 group"
+                    data-testid="link-legal-cookie-policy"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-primary transition-smooth"></span>
+                    <span className="group-hover:translate-x-1 transition-smooth">Cookie Policy</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-primary transition-smooth text-sm flex items-center gap-2 group"
+                    data-testid="link-legal-refund-policy"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-primary transition-smooth"></span>
+                    <span className="group-hover:translate-x-1 transition-smooth">Refund Policy</span>
+                  </a>
+                </li>
               </ul>
             </div>
 
