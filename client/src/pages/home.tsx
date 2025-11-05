@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Sparkles, Zap, Users, Clock, CheckCircle, Code, Smartphone, Brain, Award, TrendingUp, Target, BookOpen, Lightbulb, Rocket, Play, Pause, VolumeX, Volume2, Cloud } from 'lucide-react';
+import { ArrowRight, Sparkles, Zap, Users, Clock, CheckCircle, Code, Smartphone, Brain, Award, TrendingUp, Target, BookOpen, Lightbulb, Rocket, Play, Pause, VolumeX, Volume2, Cloud, X as TwitterX, Instagram } from 'lucide-react';
 import { SiReact, SiDjango, SiPostgresql, SiPython, SiTypescript, SiTailwindcss } from 'react-icons/si';
 import { useLocation } from 'wouter';
 import { useRef, useState, useEffect } from 'react';
@@ -941,7 +941,7 @@ export default function Home() {
               {/* Social Icons */}
               <div className="flex space-x-4">
                 <a href="https://x.com/FirstOf60837" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                  <X className="w-6 h-6 text-muted-foreground hover:text-primary transition-colors" />
+                  <TwitterX className="w-6 h-6 text-muted-foreground hover:text-primary transition-colors" />
                 </a>
                 <a href="https://www.instagram.com/rishiagrawal45202/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                   <Instagram className="w-6 h-6 text-muted-foreground hover:text-primary transition-colors" />
