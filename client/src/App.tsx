@@ -29,6 +29,7 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import BackToTop from "@/components/back-to-top";
 import ScrollProgress from "@/components/scroll-progress";
+import ChatWidget from "@/components/chat-widget";
 
 // Page Transition Animation
 const pageVariants = {
@@ -53,6 +54,7 @@ const PageLayout = ({ children }: { children: React.ReactNode }) => {
       <main>{children}</main>
       <Footer />
       <BackToTop />
+      <ChatWidget />
     </>
   );
 };

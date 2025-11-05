@@ -5,7 +5,8 @@ import {
   SiFacebook, 
   SiYoutube,
   SiInstagram,
-  SiX 
+  SiX,
+  SiWhatsapp 
 } from "react-icons/si";
 import { 
   Mail, 
@@ -140,12 +141,12 @@ export default function Footer() {
                   </p>
                 </div>
               </div>
-              
+
               <p className="text-gray-300 leading-relaxed text-lg max-w-xl">
                 Where <span className="text-primary font-semibold">ideas</span> meet <span className="text-secondary font-semibold">code</span>. 
                 Building next-generation intelligent software systems for modern businesses.
               </p>
-              
+
               <div className="flex items-center gap-2 text-sm">
                 <div className="px-3 py-1.5 bg-primary/10 border border-primary/30 rounded-lg">
                   <span className="text-gray-400">CIN:</span> 
@@ -160,11 +161,11 @@ export default function Footer() {
                 <Mail className="w-6 h-6 text-primary" />
                 <h4 className="text-xl font-bold text-white">Stay Updated</h4>
               </div>
-              
+
               <p className="text-gray-400 mb-6 text-sm leading-relaxed">
                 Subscribe to our newsletter for the latest updates, tech insights, and exclusive offers.
               </p>
-              
+
               <form onSubmit={handleSubscribe} className="relative">
                 <div className="relative flex gap-2">
                   <div className="flex-1 relative">
@@ -178,7 +179,7 @@ export default function Footer() {
                       data-testid="input-newsletter-email"
                     />
                   </div>
-                  
+
                   <button
                     type="submit"
                     className="px-6 py-3.5 bg-gradient-to-r from-primary to-secondary rounded-xl text-white font-semibold hover:shadow-lg hover:shadow-primary/50 hover:scale-105 transition-smooth flex items-center gap-2 group/btn"
@@ -188,7 +189,7 @@ export default function Footer() {
                     <Send className="w-4 h-4 group-hover/btn:translate-x-1 transition-smooth" />
                   </button>
                 </div>
-                
+
                 {isSubscribed && (
                   <div className="absolute -bottom-8 left-0 text-primary text-sm font-medium animate-in fade-in slide-in-from-bottom-2 duration-300">
                     ✓ Successfully subscribed!
@@ -209,19 +210,35 @@ export default function Footer() {
                 Products
               </h4>
               <ul className="space-y-3">
-                {productLinks.map((item, index) => (
-                  <li key={item}>
-                    <a
-                      href="#"
-                      className="text-gray-400 hover:text-primary transition-smooth text-sm flex items-center gap-2 group"
-                      style={{ animationDelay: `${index * 50}ms` }}
-                      data-testid={`link-product-${item.toLowerCase().replace(/ /g, '-')}`}
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-primary transition-smooth"></span>
-                      <span className="group-hover:translate-x-1 transition-smooth">{item}</span>
-                    </a>
-                  </li>
-                ))}
+                {productLinks.map((item, index) => {
+                  let linkHref = "#";
+                  if (item === "SkoolHub 2.0") {
+                    linkHref = "/products/skoolhub-2.0"; // Assuming this is the correct product page
+                  } else if (item === "Retail Management") {
+                    linkHref = "/products/retail-management"; // Placeholder
+                  } else if (item === "Restaurant Solutions") {
+                    linkHref = "/products/restaurant-solutions"; // Placeholder
+                  } else if (item === "Custom Development") {
+                    linkHref = "/services/custom-development"; // Placeholder
+                  } else if (item === "AI Integration") {
+                    linkHref = "/services/ai-integration"; // Placeholder
+                  } else if (item === "Cloud Services") {
+                    linkHref = "/services/cloud-services"; // Placeholder
+                  }
+                  return (
+                    <li key={item}>
+                      <a
+                        href={linkHref}
+                        className="text-gray-400 hover:text-primary transition-smooth text-sm flex items-center gap-2 group"
+                        style={{ animationDelay: `${index * 50}ms` }}
+                        data-testid={`link-product-${item.toLowerCase().replace(/ /g, '-')}`}
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-primary transition-smooth"></span>
+                        <span className="group-hover:translate-x-1 transition-smooth">{item}</span>
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 
@@ -267,46 +284,19 @@ export default function Footer() {
                 Legal
               </h4>
               <ul className="space-y-3">
-                <li>
-                  <a
-                    href="/privacy-policy"
-                    className="text-gray-400 hover:text-primary transition-smooth text-sm flex items-center gap-2 group"
-                    data-testid="link-legal-privacy-policy"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-primary transition-smooth"></span>
-                    <span className="group-hover:translate-x-1 transition-smooth">Privacy Policy</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/terms"
-                    className="text-gray-400 hover:text-primary transition-smooth text-sm flex items-center gap-2 group"
-                    data-testid="link-legal-terms-of-service"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-primary transition-smooth"></span>
-                    <span className="group-hover:translate-x-1 transition-smooth">Terms of Service</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/cookie-policy"
-                    className="text-gray-400 hover:text-primary transition-smooth text-sm flex items-center gap-2 group"
-                    data-testid="link-legal-cookie-policy"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-primary transition-smooth"></span>
-                    <span className="group-hover:translate-x-1 transition-smooth">Cookie Policy</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/refund-policy"
-                    className="text-gray-400 hover:text-primary transition-smooth text-sm flex items-center gap-2 group"
-                    data-testid="link-legal-refund-policy"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-primary transition-smooth"></span>
-                    <span className="group-hover:translate-x-1 transition-smooth">Refund Policy</span>
-                  </a>
-                </li>
+                {legalLinks.map((item, index) => (
+                  <li key={item}>
+                    <a
+                      href={`/${item.toLowerCase().replace(/ /g, '-')}`}
+                      className="text-gray-400 hover:text-primary transition-smooth text-sm flex items-center gap-2 group"
+                      style={{ animationDelay: `${index * 50}ms` }}
+                      data-testid={`link-legal-${item.toLowerCase().replace(/ /g, '-')}`}
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-primary transition-smooth"></span>
+                      <span className="group-hover:translate-x-1 transition-smooth">{item}</span>
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -316,22 +306,24 @@ export default function Footer() {
                 <div className="w-1 h-6 bg-gradient-to-b from-primary to-secondary rounded-full"></div>
                 Connect
               </h4>
-              
+
               {/* Contact Info */}
               <div className="space-y-4 mb-6">
                 <a href="mailto:contact@codicore.com" className="flex items-start gap-3 text-gray-400 hover:text-primary transition-smooth group" data-testid="link-contact-email">
                   <Mail className="w-5 h-5 mt-0.5 group-hover:scale-110 transition-smooth" />
                   <span className="text-sm">contact@codicore.com</span>
                 </a>
-                
-                <a href="tel:+91" className="flex items-start gap-3 text-gray-400 hover:text-primary transition-smooth group" data-testid="link-contact-phone">
+
+                <a href="tel:+918954730444" className="flex items-start gap-3 text-gray-400 hover:text-primary transition-smooth group" data-testid="link-contact-phone">
                   <Phone className="w-5 h-5 mt-0.5 group-hover:scale-110 transition-smooth" />
-                  <span className="text-sm">+91 XXX XXX XXXX</span>
+                  <span className="text-sm">+91 8954730444</span>
                 </a>
-                
+
                 <div className="flex items-start gap-3 text-gray-400 group" data-testid="text-contact-address">
                   <MapPin className="w-5 h-5 mt-0.5" />
-                  <span className="text-sm">Uttar Pradesh, India</span>
+                  <span className="text-sm">
+                    Plot No. 27, Near Sector 15, Noida, Uttar Pradesh 201301, India
+                  </span>
                 </div>
               </div>
 
@@ -354,6 +346,18 @@ export default function Footer() {
                       <ExternalLink className="absolute -top-1 -right-1 w-3 h-3 text-white opacity-0 group-hover:opacity-100 transition-smooth" />
                     </a>
                   ))}
+                  
+                  {/* WhatsApp Link */}
+                  <a 
+                    href="https://wa.me/918954730444" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-3 p-4 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl text-white hover-lift transition-all duration-300 transform hover:scale-105"
+                    data-testid="link-whatsapp"
+                  >
+                    <SiWhatsapp className="w-6 h-6" />
+                    <span className="font-semibold">WhatsApp</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -370,12 +374,12 @@ export default function Footer() {
               </span>
               . All rights reserved.
             </p>
-            
+
             <div className="flex items-center gap-4">
               <p className="text-gray-500 text-sm flex items-center gap-2">
                 Made with <Heart className="w-4 h-4 text-red-500 fill-red-500 animate-pulse" /> in India
               </p>
-              
+
               {/* Scroll to Top Button */}
               <button
                 onClick={scrollToTop}

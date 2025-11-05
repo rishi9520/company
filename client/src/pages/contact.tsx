@@ -339,15 +339,15 @@ export default function ContactPage() {
               <ContactCard
                 icon={Phone}
                 title="Call Us"
-                details="+91 98765 43210"
-                link="tel:+919876543210"
+                details="+91 89547 30444"
+                link="tel:+918954730444"
                 delay={0.2}
               />
               
               <ContactCard
                 icon={MapPin}
                 title="Visit Us"
-                details="Uttar Pradesh, India"
+                details="Bahiyal Moh, Near Krishna, Hanuman Mandir Ke barabar, Saadabad, Hathras-281306, Uttar Pradesh, India"
                 delay={0.3}
               />
 
@@ -398,7 +398,7 @@ export default function ContactPage() {
                       <span className="font-semibold">Facebook</span>
                     </a>
                     <a 
-                      href="https://wa.me/919876543210" 
+                      href="https://wa.me/918954730444" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="flex items-center space-x-3 p-4 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl text-white hover-lift transition-all duration-300 transform hover:scale-105"

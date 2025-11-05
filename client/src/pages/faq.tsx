@@ -269,9 +269,9 @@ export default function FAQPage() {
           <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
             Our team is here to help. Contact us for personalized assistance.
           </p>
-          <button className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-xl font-semibold hover:scale-105 transition-smooth">
+          <a href="/contact" className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-xl font-semibold hover:scale-105 transition-smooth inline-block">
             Contact Support
-          </button>
+          </a>
         </motion.div>
       </div>
     </div>
