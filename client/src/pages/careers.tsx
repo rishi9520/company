@@ -1033,7 +1033,7 @@ export default function CareersPage() {
                   <div className="grid md:grid-cols-2 gap-4">
                     <Input
                       placeholder="Your Name"
-                      className="bg-background/50"
+                      className="bg-background/50 text-foreground placeholder:text-muted-foreground"
                       value={inquiryForm.name}
                       onChange={(e) => setInquiryForm({...inquiryForm, name: e.target.value})}
                       required
@@ -1042,7 +1042,7 @@ export default function CareersPage() {
                     <Input
                       type="email"
                       placeholder="Email Address"
-                      className="bg-background/50"
+                      className="bg-background/50 text-foreground placeholder:text-muted-foreground"
                       value={inquiryForm.email}
                       onChange={(e) => setInquiryForm({...inquiryForm, email: e.target.value})}
                       required
@@ -1051,7 +1051,7 @@ export default function CareersPage() {
                   </div>
                   <Input
                     placeholder="Subject"
-                    className="bg-background/50"
+                    className="bg-background/50 text-foreground placeholder:text-muted-foreground"
                     value={inquiryForm.subject}
                     onChange={(e) => setInquiryForm({...inquiryForm, subject: e.target.value})}
                     data-testid="input-subject"
@@ -1059,7 +1059,7 @@ export default function CareersPage() {
                   <Textarea
                     placeholder="Your Message"
                     rows={4}
-                    className="bg-background/50"
+                    className="bg-background/50 text-foreground placeholder:text-muted-foreground"
                     value={inquiryForm.message}
                     onChange={(e) => setInquiryForm({...inquiryForm, message: e.target.value})}
                     required
