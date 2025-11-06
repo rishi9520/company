@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { useNavigate } from 'wouter';
 import { 
   Users, Target, Rocket, TrendingUp, Award, Trophy,
   Star, Heart, Zap, Globe, Shield, Sparkles,
@@ -28,12 +29,43 @@ import companyLogo from '@asset/logo_of_company-removebg-preview_1762392516625.p
 
 export default function CareersPage() {
   useLenis();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('culture');
   const [selectedDepartment, setSelectedDepartment] = useState('all');
+  const [inquiryForm, setInquiryForm] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
+
+  const handleInquirySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: inquiryForm.name.split(' ')[0],
+          lastName: inquiryForm.name.split(' ').slice(1).join(' ') || '',
+          email: inquiryForm.email,
+          subject: inquiryForm.subject || 'Career Inquiry',
+          message: inquiryForm.message,
+        }),
+      });
+
+      if (response.ok) {
+        alert('Message sent successfully! We will get back to you soon.');
+        setInquiryForm({ name: '', email: '', subject: '', message: '' });
+      }
+    } catch (error) {
+      alert('Error sending message. Please try again.');
+    }
+  };
 
   useEffect(() => {
     const createFloatingElement = () => {
@@ -387,12 +419,18 @@ export default function CareersPage() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="flex flex-wrap gap-4 justify-center"
             >
-              <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-primary to-secondary hover:shadow-2xl hover:shadow-primary/50" data-testid="button-view-openings">
+              <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-primary to-secondary hover:shadow-2xl hover:shadow-primary/50" onClick={() => {
+                const openingsSection = document.getElementById('job-openings');
+                openingsSection?.scrollIntoView({ behavior: 'smooth' });
+              }} data-testid="button-view-openings">
                 <Briefcase className="mr-2 w-5 h-5" />
                 View Open Positions
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-              <Button size="lg" variant="outline" className="px-8 py-6 text-lg border-2" data-testid="button-life-at-codicore">
+              <Button size="lg" variant="outline" className="px-8 py-6 text-lg border-2" onClick={() => {
+                const cultureSection = document.getElementById('life-at-codicore');
+                cultureSection?.scrollIntoView({ behavior: 'smooth' });
+              }} data-testid="button-life-at-codicore">
                 <Play className="mr-2 w-5 h-5" />
                 Life at Codicore
               </Button>
@@ -531,7 +569,7 @@ export default function CareersPage() {
           </div>
         </AnimatedSection>
 
-        <AnimatedSection className="py-20">
+        <AnimatedSection id="life-at-codicore" className="py-20">
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
               <Badge className="mb-4 px-4 py-2" variant="secondary" data-testid="badge-culture">
@@ -752,7 +790,7 @@ export default function CareersPage() {
           </div>
         </AnimatedSection>
 
-        <AnimatedSection className="py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+        <AnimatedSection id="job-openings" className="py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
               <Badge className="mb-4 px-4 py-2" variant="secondary" data-testid="badge-departments">
@@ -818,7 +856,7 @@ export default function CareersPage() {
               <p className="text-muted-foreground mb-6">
                 We're always looking for talented individuals. Don't see your role?
               </p>
-              <Button size="lg" className="px-8 py-6 bg-gradient-to-r from-primary to-secondary" data-testid="button-submit-application">
+              <Button size="lg" className="px-8 py-6 bg-gradient-to-r from-primary to-secondary" onClick={() => navigate('/contact')} data-testid="button-submit-application">
                 <Send className="mr-2 w-5 h-5" />
                 Submit Open Application
               </Button>
@@ -991,14 +1029,43 @@ export default function CareersPage() {
 
               <div className="p-8 rounded-2xl bg-gradient-to-br from-background/80 to-background/60 backdrop-blur-xl border border-white/10">
                 <h3 className="text-2xl font-bold mb-6 text-center text-foreground">Quick Inquiry</h3>
-                <form className="space-y-4" data-testid="form-inquiry">
+                <form onSubmit={handleInquirySubmit} className="space-y-4" data-testid="form-inquiry">
                   <div className="grid md:grid-cols-2 gap-4">
-                    <Input placeholder="Your Name" className="bg-background/50" data-testid="input-name" />
-                    <Input type="email" placeholder="Email Address" className="bg-background/50" data-testid="input-email" />
+                    <Input 
+                      placeholder="Your Name" 
+                      className="bg-background/50" 
+                      value={inquiryForm.name}
+                      onChange={(e) => setInquiryForm({...inquiryForm, name: e.target.value})}
+                      required
+                      data-testid="input-name" 
+                    />
+                    <Input 
+                      type="email" 
+                      placeholder="Email Address" 
+                      className="bg-background/50" 
+                      value={inquiryForm.email}
+                      onChange={(e) => setInquiryForm({...inquiryForm, email: e.target.value})}
+                      required
+                      data-testid="input-email" 
+                    />
                   </div>
-                  <Input placeholder="Subject" className="bg-background/50" data-testid="input-subject" />
-                  <Textarea placeholder="Your Message" rows={4} className="bg-background/50" data-testid="textarea-message" />
-                  <Button className="w-full bg-gradient-to-r from-primary to-secondary" size="lg" data-testid="button-send-message">
+                  <Input 
+                    placeholder="Subject" 
+                    className="bg-background/50" 
+                    value={inquiryForm.subject}
+                    onChange={(e) => setInquiryForm({...inquiryForm, subject: e.target.value})}
+                    data-testid="input-subject" 
+                  />
+                  <Textarea 
+                    placeholder="Your Message" 
+                    rows={4} 
+                    className="bg-background/50" 
+                    value={inquiryForm.message}
+                    onChange={(e) => setInquiryForm({...inquiryForm, message: e.target.value})}
+                    required
+                    data-testid="textarea-message" 
+                  />
+                  <Button type="submit" className="w-full bg-gradient-to-r from-primary to-secondary" size="lg" data-testid="button-send-message">
                     <Send className="mr-2 w-5 h-5" />
                     Send Message
                   </Button>
@@ -1050,12 +1117,12 @@ export default function CareersPage() {
                 transition={{ delay: 0.4 }}
                 className="flex flex-wrap gap-4 justify-center"
               >
-                <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-primary to-secondary hover:shadow-2xl hover:shadow-primary/50" data-testid="button-apply-now">
+                <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-primary to-secondary hover:shadow-2xl hover:shadow-primary/50" onClick={() => navigate('/contact')} data-testid="button-apply-now">
                   <Briefcase className="mr-2 w-5 h-5" />
                   Apply Now
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
-                <Button size="lg" variant="outline" className="px-8 py-6 text-lg border-2" data-testid="button-learn-more">
+                <Button size="lg" variant="outline" className="px-8 py-6 text-lg border-2" onClick={() => navigate('/about')} data-testid="button-learn-more">
                   <Users className="mr-2 w-5 h-5" />
                   Learn More About Us
                 </Button>

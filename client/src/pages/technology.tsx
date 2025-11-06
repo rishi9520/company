@@ -507,14 +507,14 @@ export default function TechnologyPage() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="flex flex-wrap gap-4 justify-center"
             >
-              <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-primary to-secondary hover:shadow-2xl hover:shadow-primary/50" data-testid="button-explore-stack">
+              <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-primary to-secondary hover:shadow-2xl hover:shadow-primary/50" onClick={() => window.location.href = '/products'} data-testid="button-explore-stack">
                 <Rocket className="mr-2 w-5 h-5" />
-                Explore Our Stack
+                Explore Our Products
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-              <Button size="lg" variant="outline" className="px-8 py-6 text-lg border-2" data-testid="button-view-projects">
+              <Button size="lg" variant="outline" className="px-8 py-6 text-lg border-2" onClick={() => window.location.href = '/products'} data-testid="button-view-projects">
                 <Eye className="mr-2 w-5 h-5" />
-                View Projects
+                View Products
               </Button>
             </motion.div>
 
@@ -946,15 +946,15 @@ export default function TechnologyPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               <StatCard
                 icon={Rocket}
-                value={150}
+                value={100}
                 label="Projects Delivered"
                 color="#10b981, #059669"
                 trend={25}
               />
               <StatCard
                 icon={Users}
-                value={500}
-                label="Active Users"
+                value={200}
+                label="Happy Clients"
                 color="#3b82f6, #2563eb"
                 trend={40}
               />
@@ -971,34 +971,6 @@ export default function TechnologyPage() {
                 label="Client Satisfaction %"
                 color="#f59e0b, #d97706"
                 trend={5}
-              />
-              <StatCard
-                icon={Globe}
-                value={25}
-                label="Countries Served"
-                color="#06b6d4, #0891b2"
-                trend={30}
-              />
-              <StatCard
-                icon={Zap}
-                value="99.9%"
-                label="Uptime Guarantee"
-                color="#10b981, #059669"
-                trend={0}
-              />
-              <StatCard
-                icon={Lock}
-                value="100%"
-                label="Security Score"
-                color="#dc2626, #b91c1c"
-                trend={0}
-              />
-              <StatCard
-                icon={Heart}
-                value={1000}
-                label="Lines of Code (K)"
-                color="#ec4899, #db2777"
-                trend={50}
               />
             </div>
           </div>
@@ -1297,12 +1269,12 @@ export default function TechnologyPage() {
                 transition={{ delay: 0.4 }}
                 className="flex flex-wrap gap-4 justify-center"
               >
-                <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-primary to-secondary hover:shadow-2xl hover:shadow-primary/50" data-testid="button-start-project">
+                <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-primary to-secondary hover:shadow-2xl hover:shadow-primary/50" onClick={() => window.location.href = '/contact'} data-testid="button-start-project">
                   <Rocket className="mr-2 w-5 h-5" />
                   Start Your Project
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
-                <Button size="lg" variant="outline" className="px-8 py-6 text-lg border-2" data-testid="button-schedule-demo">
+                <Button size="lg" variant="outline" className="px-8 py-6 text-lg border-2" onClick={() => window.location.href = '/contact'} data-testid="button-schedule-demo">
                   <Play className="mr-2 w-5 h-5" />
                   Schedule a Demo
                 </Button>

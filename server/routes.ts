@@ -1,52 +1,91 @@
 import type { Express } from "express";
-import { createServer, type Server } from "http";
-import { z } from "zod";
+import { db } from "@db";
+import { contacts } from "@db/schema";
 
-const contactSchema = z.object({
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
-  email: z.string().email("Invalid email address"),
-  subject: z.string().min(1, "Subject is required"),
-  message: z.string().min(10, "Message must be at least 10 characters long"),
-});
-
-export async function registerRoutes(app: Express): Promise<Server> {
-  // Contact form submission endpoint
+export function registerRoutes(app: Express) {
   app.post("/api/contact", async (req, res) => {
     try {
-      const validatedData = contactSchema.parse(req.body);
-      
-      // In a real application, you would:
-      // 1. Save to database
-      // 2. Send email notification
-      // 3. Send confirmation email to user
-      
-      console.log("Contact form submission:", validatedData);
-      
-      // Simulate processing delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      res.json({ 
-        success: true, 
-        message: "Message received successfully. We'll get back to you soon!" 
-      });
+      const { firstName, lastName, email, phone, company, subject, message, budget, timeline } = req.body;
+
+      const newContact = await db.insert(contacts).values({
+        firstName,
+        lastName,
+        email,
+        phone,
+        company,
+        subject,
+        message,
+        budget,
+        timeline,
+      }).returning();
+
+      res.status(200).json({ success: true, data: newContact });
     } catch (error) {
-      if (error instanceof z.ZodError) {
-        res.status(400).json({ 
-          success: false, 
-          message: "Invalid form data", 
-          errors: error.errors 
-        });
-      } else {
-        console.error("Contact form error:", error);
-        res.status(500).json({ 
-          success: false, 
-          message: "Internal server error" 
-        });
-      }
+      console.error("Error saving contact:", error);
+      res.status(500).json({ success: false, error: "Failed to save contact" });
     }
   });
 
-  const httpServer = createServer(app);
-  return httpServer;
+  // Career application endpoint
+  app.post("/api/careers/apply", async (req, res) => {
+    try {
+      const { firstName, lastName, email, phone, position, resume, coverLetter } = req.body;
+
+      // Save to contacts table with subject as "Career Application"
+      const newApplication = await db.insert(contacts).values({
+        firstName,
+        lastName,
+        email,
+        phone,
+        company: position,
+        subject: "Career Application",
+        message: coverLetter || `Application for ${position}`,
+      }).returning();
+
+      res.status(200).json({ success: true, data: newApplication });
+    } catch (error) {
+      console.error("Error saving career application:", error);
+      res.status(500).json({ success: false, error: "Failed to save application" });
+    }
+  });
+
+  // Get job openings
+  app.get("/api/careers/openings", async (req, res) => {
+    try {
+      const openings = [
+        {
+          id: 1,
+          title: "Senior React Developer",
+          department: "Engineering",
+          location: "Remote/Hathras",
+          type: "Full-time",
+          experience: "3-5 years",
+          description: "Build next-generation web applications with our tech stack"
+        },
+        {
+          id: 2,
+          title: "Python Backend Developer",
+          department: "Engineering",
+          location: "Remote/Hathras",
+          type: "Full-time",
+          experience: "2-4 years",
+          description: "Develop robust APIs and backend systems"
+        },
+        {
+          id: 3,
+          title: "UI/UX Designer",
+          department: "Design",
+          location: "Remote/Hathras",
+          type: "Full-time",
+          experience: "2-3 years",
+          description: "Design beautiful and intuitive user experiences"
+        }
+      ];
+
+      res.status(200).json({ success: true, data: openings });
+    } catch (error) {
+      console.error("Error fetching job openings:", error);
+      res.status(500).json({ success: false, error: "Failed to fetch openings" });
+    }
+  });
 }
