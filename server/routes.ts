@@ -1,6 +1,6 @@
 import type { Express } from "express";
-import { db } from "./db.js";
-import { contacts } from "../shared/schema.js";
+import { db } from "@db";
+import { contacts } from "@db/schema";
 
 export function registerRoutes(app: Express) {
   app.post("/api/contact", async (req, res) => {
