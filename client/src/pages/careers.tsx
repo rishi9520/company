@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-import { useNavigate } from 'wouter';
-import { 
+import { useNavigate, useLocation } from 'wouter';
+import {
   Users, Target, Rocket, TrendingUp, Award, Trophy,
   Star, Heart, Zap, Globe, Shield, Sparkles,
   Code, Briefcase, GraduationCap, Clock, MapPin,
@@ -29,7 +29,8 @@ import companyLogo from '@asset/logo_of_company-removebg-preview_1762392516625.p
 
 export default function CareersPage() {
   useLenis();
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Keep navigate for potential other uses, but use setLocation for specific buttons.
+  const setLocation = useLocation()[1]; // Get the setLocation function from useLocation.
   const [activeTab, setActiveTab] = useState('culture');
   const [selectedDepartment, setSelectedDepartment] = useState('all');
   const [inquiryForm, setInquiryForm] = useState({
@@ -79,7 +80,7 @@ export default function CareersPage() {
       element.style.opacity = '0.6';
       element.style.animation = `float-up ${10 + Math.random() * 10}s linear forwards`;
       document.body.appendChild(element);
-      
+
       setTimeout(() => {
         if (document.body.contains(element)) {
           document.body.removeChild(element);
@@ -88,7 +89,7 @@ export default function CareersPage() {
     };
 
     const interval = setInterval(createFloatingElement, 600);
-    
+
     return () => clearInterval(interval);
   }, []);
 
@@ -106,12 +107,12 @@ export default function CareersPage() {
         data-testid={`value-card-${title.toLowerCase().replace(/\s+/g, '-')}`}
       >
         <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl" style={{ background: `linear-gradient(135deg, ${color})` }}></div>
-        
+
         <div className="relative z-10">
           <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300" style={{ background: `linear-gradient(135deg, ${color})` }}>
             <Icon className="w-8 h-8 text-white" />
           </div>
-          
+
           <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">
             {title}
           </h3>
@@ -142,7 +143,7 @@ export default function CareersPage() {
             Popular
           </Badge>
         )}
-        
+
         <div className="flex items-start gap-4">
           <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center flex-shrink-0 group-hover:from-primary/30 group-hover:to-secondary/30 transition-all duration-300">
             <Icon className="w-6 h-6 text-primary" />
@@ -171,7 +172,7 @@ export default function CareersPage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-lg shadow-lg z-10">
           {number}
         </div>
-        
+
         <div className="pt-8 p-6 rounded-2xl bg-gradient-to-br from-background/80 to-background/60 backdrop-blur-xl border border-white/10 hover:border-primary/30 transition-all duration-300">
           <Icon className="w-12 h-12 mx-auto mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
           <h4 className="text-lg font-bold mb-2 text-foreground">{title}</h4>
@@ -203,7 +204,7 @@ export default function CareersPage() {
             <p className="text-sm text-muted-foreground">{role}</p>
           </div>
         </div>
-        
+
         <p className="text-sm text-muted-foreground italic leading-relaxed">
           "{quote}"
         </p>
@@ -223,8 +224,8 @@ export default function CareersPage() {
         whileHover={{ scale: 1.02 }}
         onClick={() => setSelectedDepartment(title.toLowerCase())}
         className={`relative p-6 rounded-xl bg-gradient-to-br from-background/80 to-background/60 backdrop-blur-xl border cursor-pointer transition-all duration-300 ${
-          selectedDepartment === title.toLowerCase() 
-            ? 'border-primary shadow-lg shadow-primary/20' 
+          selectedDepartment === title.toLowerCase()
+            ? 'border-primary shadow-lg shadow-primary/20'
             : 'border-white/10 hover:border-primary/30'
         }`}
         data-testid={`department-card-${title.toLowerCase().replace(/\s+/g, '-')}`}
@@ -283,7 +284,7 @@ export default function CareersPage() {
         data-testid={`stat-card-${label.toLowerCase().replace(/\s+/g, '-')}`}
       >
         <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial opacity-20" style={{ background: `radial-gradient(circle, ${color}, transparent)` }}></div>
-        
+
         <Icon className="w-10 h-10 mx-auto mb-4" style={{ color }} />
         <div className="text-4xl font-bold mb-2 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
           {typeof value === 'number' ? count : value}
@@ -311,7 +312,7 @@ export default function CareersPage() {
           </div>
           <h4 className="font-semibold text-foreground">{title}</h4>
         </div>
-        
+
         <ul className="space-y-2">
           {items.map((item: string, index: number) => (
             <li key={index} className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -346,7 +347,7 @@ export default function CareersPage() {
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,rgba(16,185,129,0.05)_0deg,rgba(6,182,212,0.05)_90deg,rgba(139,92,246,0.05)_180deg,rgba(245,158,11,0.05)_270deg,rgba(16,185,129,0.05)_360deg)] animate-spin-slow"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent_50%)] animate-pulse-slow"></div>
-        
+
         <svg className="absolute inset-0 w-full h-full opacity-5" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="career-grid" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
@@ -359,13 +360,13 @@ export default function CareersPage() {
       </div>
 
       <div className="relative z-10">
-        <motion.section 
+        <motion.section
           ref={heroRef}
           style={{ opacity, scale }}
           className="relative min-h-[90vh] flex items-center justify-center overflow-hidden"
         >
           <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-background"></div>
-          
+
           <div className="container mx-auto px-6 text-center relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -373,9 +374,9 @@ export default function CareersPage() {
               transition={{ duration: 0.8 }}
               className="mb-8"
             >
-              <img 
-                src={companyLogo} 
-                alt="Codicore Logo" 
+              <img
+                src={companyLogo}
+                alt="Codicore Logo"
                 className="w-32 h-32 mx-auto mb-6 drop-shadow-2xl animate-float"
                 data-testid="company-logo"
               />
@@ -699,7 +700,7 @@ export default function CareersPage() {
                       </ul>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-6">
                     <div className="p-6 rounded-xl bg-gradient-to-br from-background/80 to-background/60 backdrop-blur-xl border border-white/10">
                       <h3 className="text-2xl font-bold mb-4 text-foreground">Learning Opportunities</h3>
@@ -856,7 +857,7 @@ export default function CareersPage() {
               <p className="text-muted-foreground mb-6">
                 We're always looking for talented individuals. Don't see your role?
               </p>
-              <Button size="lg" className="px-8 py-6 bg-gradient-to-r from-primary to-secondary" onClick={() => navigate('/contact')} data-testid="button-submit-application">
+              <Button size="lg" className="px-8 py-6 bg-gradient-to-r from-primary to-secondary" onClick={() => setLocation('/contact')} data-testid="button-submit-application">
                 <Send className="mr-2 w-5 h-5" />
                 Submit Open Application
               </Button>
@@ -968,7 +969,7 @@ export default function CareersPage() {
                 <div>
                   <h3 className="text-xl font-bold mb-2 text-foreground">Typical Timeline</h3>
                   <p className="text-muted-foreground mb-4">
-                    Our entire process usually takes 2-3 weeks from application to offer. We value your time and 
+                    Our entire process usually takes 2-3 weeks from application to offer. We value your time and
                     provide feedback at every stage.
                   </p>
                   <div className="flex flex-wrap gap-4 text-sm">
@@ -1031,39 +1032,39 @@ export default function CareersPage() {
                 <h3 className="text-2xl font-bold mb-6 text-center text-foreground">Quick Inquiry</h3>
                 <form onSubmit={handleInquirySubmit} className="space-y-4" data-testid="form-inquiry">
                   <div className="grid md:grid-cols-2 gap-4">
-                    <Input 
-                      placeholder="Your Name" 
-                      className="bg-background/50" 
+                    <Input
+                      placeholder="Your Name"
+                      className="bg-background/50"
                       value={inquiryForm.name}
                       onChange={(e) => setInquiryForm({...inquiryForm, name: e.target.value})}
                       required
-                      data-testid="input-name" 
+                      data-testid="input-name"
                     />
-                    <Input 
-                      type="email" 
-                      placeholder="Email Address" 
-                      className="bg-background/50" 
+                    <Input
+                      type="email"
+                      placeholder="Email Address"
+                      className="bg-background/50"
                       value={inquiryForm.email}
                       onChange={(e) => setInquiryForm({...inquiryForm, email: e.target.value})}
                       required
-                      data-testid="input-email" 
+                      data-testid="input-email"
                     />
                   </div>
-                  <Input 
-                    placeholder="Subject" 
-                    className="bg-background/50" 
+                  <Input
+                    placeholder="Subject"
+                    className="bg-background/50"
                     value={inquiryForm.subject}
                     onChange={(e) => setInquiryForm({...inquiryForm, subject: e.target.value})}
-                    data-testid="input-subject" 
+                    data-testid="input-subject"
                   />
-                  <Textarea 
-                    placeholder="Your Message" 
-                    rows={4} 
-                    className="bg-background/50" 
+                  <Textarea
+                    placeholder="Your Message"
+                    rows={4}
+                    className="bg-background/50"
                     value={inquiryForm.message}
                     onChange={(e) => setInquiryForm({...inquiryForm, message: e.target.value})}
                     required
-                    data-testid="textarea-message" 
+                    data-testid="textarea-message"
                   />
                   <Button type="submit" className="w-full bg-gradient-to-r from-primary to-secondary" size="lg" data-testid="button-send-message">
                     <Send className="mr-2 w-5 h-5" />
@@ -1117,12 +1118,12 @@ export default function CareersPage() {
                 transition={{ delay: 0.4 }}
                 className="flex flex-wrap gap-4 justify-center"
               >
-                <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-primary to-secondary hover:shadow-2xl hover:shadow-primary/50" onClick={() => navigate('/contact')} data-testid="button-apply-now">
+                <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-primary to-secondary hover:shadow-2xl hover:shadow-primary/50" onClick={() => setLocation('/contact')} data-testid="button-apply-now">
                   <Briefcase className="mr-2 w-5 h-5" />
                   Apply Now
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
-                <Button size="lg" variant="outline" className="px-8 py-6 text-lg border-2" onClick={() => navigate('/about')} data-testid="button-learn-more">
+                <Button size="lg" variant="outline" className="px-8 py-6 text-lg border-2" onClick={() => setLocation('/about')} data-testid="button-learn-more">
                   <Users className="mr-2 w-5 h-5" />
                   Learn More About Us
                 </Button>

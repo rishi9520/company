@@ -65,7 +65,7 @@ export default function TechnologyPage() {
       element.style.opacity = '0.6';
       element.style.animation = `float-up ${10 + Math.random() * 10}s linear forwards`;
       document.body.appendChild(element);
-      
+
       setTimeout(() => {
         if (document.body.contains(element)) {
           document.body.removeChild(element);
@@ -74,7 +74,7 @@ export default function TechnologyPage() {
     };
 
     const interval = setInterval(createFloatingElement, 500);
-    
+
     return () => clearInterval(interval);
   }, []);
 
@@ -119,7 +119,7 @@ export default function TechnologyPage() {
       >
         <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-500" style={{ background: `linear-gradient(135deg, ${color}, transparent)` }}></div>
         <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-primary/20 to-transparent blur-3xl group-hover:w-48 group-hover:h-48 transition-all duration-700"></div>
-        
+
         <div className="relative z-10">
           <motion.div 
             className="mb-6 inline-block"
@@ -130,7 +130,7 @@ export default function TechnologyPage() {
               <Icon className="w-10 h-10 text-white" />
             </div>
           </motion.div>
-          
+
           <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent group-hover:from-primary group-hover:to-secondary transition-all duration-300">
             {title}
           </h3>
@@ -201,7 +201,7 @@ export default function TechnologyPage() {
         data-testid={`feature-showcase-${title.toLowerCase().replace(/\s+/g, '-')}`}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-        
+
         <div className="relative z-10">
           <div className="flex items-start justify-between mb-6">
             <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg group-hover:shadow-2xl group-hover:scale-110 transition-all duration-300">
@@ -212,7 +212,7 @@ export default function TechnologyPage() {
               Featured
             </Badge>
           </div>
-          
+
           <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
             {title}
           </h3>
@@ -270,7 +270,7 @@ export default function TechnologyPage() {
         data-testid={`stat-card-${label.toLowerCase().replace(/\s+/g, '-')}`}
       >
         <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial opacity-20" style={{ background: `radial-gradient(circle, ${color}, transparent)` }}></div>
-        
+
         <div className="relative z-10">
           <div className="flex items-center justify-between mb-4">
             <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${color})` }}>
@@ -283,7 +283,7 @@ export default function TechnologyPage() {
               </Badge>
             )}
           </div>
-          
+
           <div className="text-4xl font-bold mb-2 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
             {typeof value === 'number' ? count : value}
           </div>
@@ -317,12 +317,12 @@ export default function TechnologyPage() {
             <p className="text-muted-foreground text-sm">{description}</p>
           </div>
         </div>
-        
+
         <div className="relative">
           <div className="w-4 h-4 rounded-full bg-gradient-to-br from-primary to-secondary shadow-lg shadow-primary/50"></div>
           <div className="absolute top-4 left-1/2 w-0.5 h-24 bg-gradient-to-b from-primary/50 to-transparent -translate-x-1/2"></div>
         </div>
-        
+
         <div className="flex-1"></div>
       </motion.div>
     );
@@ -343,7 +343,7 @@ export default function TechnologyPage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold shadow-lg z-10">
           {number}
         </div>
-        
+
         <div className="pt-8 p-6 rounded-2xl bg-gradient-to-br from-background/80 to-background/60 backdrop-blur-xl border border-white/10 hover:border-primary/30 transition-all duration-300">
           <div className="flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -372,7 +372,7 @@ export default function TechnologyPage() {
       >
         <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-amber-500/20 to-transparent blur-2xl"></div>
         <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-radial from-yellow-500/10 to-transparent blur-3xl"></div>
-        
+
         <div className="relative z-10">
           <div className="flex items-start justify-between mb-6">
             <div className="flex items-center gap-3">
@@ -388,15 +388,15 @@ export default function TechnologyPage() {
             </div>
             <Trophy className="w-10 h-10 text-amber-500/50" />
           </div>
-          
+
           <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text text-transparent">
             {title}
           </h3>
           <p className="text-foreground font-semibold mb-1">{issuer}</p>
           <p className="text-sm text-muted-foreground mb-4">{description}</p>
-          
+
           <Separator className="my-4 bg-amber-500/20" />
-          
+
           <div className="grid grid-cols-2 gap-4">
             <div>
               <p className="text-xs text-muted-foreground mb-1">Issue Date</p>
@@ -434,7 +434,7 @@ export default function TechnologyPage() {
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,rgba(16,185,129,0.05)_0deg,rgba(6,182,212,0.05)_120deg,rgba(139,92,246,0.05)_240deg,rgba(16,185,129,0.05)_360deg)] animate-spin-slow"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent_50%)] animate-pulse-slow"></div>
-        
+
         <svg className="absolute inset-0 w-full h-full opacity-5" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="tech-grid" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
@@ -453,7 +453,7 @@ export default function TechnologyPage() {
           className="relative min-h-[90vh] flex items-center justify-center overflow-hidden"
         >
           <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-background"></div>
-          
+
           <div className="container mx-auto px-6 text-center relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -507,12 +507,12 @@ export default function TechnologyPage() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="flex flex-wrap gap-4 justify-center"
             >
-              <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-primary to-secondary hover:shadow-2xl hover:shadow-primary/50" onClick={() => window.location.href = '/products'} data-testid="button-explore-stack">
+              <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-primary to-secondary hover:shadow-2xl hover:shadow-primary/50" onClick={() => { window.location.href = '/products'; }} data-testid="button-explore-stack">
                 <Rocket className="mr-2 w-5 h-5" />
                 Explore Our Products
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-              <Button size="lg" variant="outline" className="px-8 py-6 text-lg border-2" onClick={() => window.location.href = '/products'} data-testid="button-view-projects">
+              <Button size="lg" variant="outline" className="px-8 py-6 text-lg border-2" onClick={() => { window.location.href = '/products'; }} data-testid="button-view-projects">
                 <Eye className="mr-2 w-5 h-5" />
                 View Products
               </Button>
@@ -554,8 +554,10 @@ export default function TechnologyPage() {
                 <Award className="w-4 h-4 mr-2" />
                 Official Certifications & Recognition
               </Badge>
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text text-transparent">
-                Certified & Recognized
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                <span className="bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text text-transparent">
+                  Certified & Recognized
+                </span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Officially registered and certified by Government of India
@@ -1030,7 +1032,7 @@ export default function TechnologyPage() {
                   <p className="text-muted-foreground">Every step validated and verified</p>
                 </div>
               </div>
-              
+
               <div className="grid md:grid-cols-3 gap-6">
                 {[
                   { icon: Bug, title: 'Bug-Free Code', desc: '99% defect-free delivery' },
@@ -1131,7 +1133,7 @@ export default function TechnologyPage() {
 
             <div className="relative max-w-7xl mx-auto">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 rounded-3xl blur-3xl"></div>
-              
+
               <div className="relative grid md:grid-cols-3 gap-8 p-8">
                 {[
                   {
@@ -1187,7 +1189,7 @@ export default function TechnologyPage() {
                         </div>
                         <h3 className="text-xl font-bold text-foreground">{arch.layer}</h3>
                       </div>
-                      
+
                       <ul className="space-y-3">
                         {arch.components.map((component, i) => (
                           <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground p-3 rounded-lg bg-background/50 hover:bg-background/70 transition-colors">
@@ -1269,12 +1271,12 @@ export default function TechnologyPage() {
                 transition={{ delay: 0.4 }}
                 className="flex flex-wrap gap-4 justify-center"
               >
-                <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-primary to-secondary hover:shadow-2xl hover:shadow-primary/50" onClick={() => window.location.href = '/contact'} data-testid="button-start-project">
+                <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-primary to-secondary hover:shadow-2xl hover:shadow-primary/50" onClick={() => { window.location.href = '/contact'; }} data-testid="button-start-project">
                   <Rocket className="mr-2 w-5 h-5" />
                   Start Your Project
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
-                <Button size="lg" variant="outline" className="px-8 py-6 text-lg border-2" onClick={() => window.location.href = '/contact'} data-testid="button-schedule-demo">
+                <Button size="lg" variant="outline" className="px-8 py-6 text-lg border-2" onClick={() => { window.location.href = '/contact'; }} data-testid="button-schedule-demo">
                   <Play className="mr-2 w-5 h-5" />
                   Schedule a Demo
                 </Button>
