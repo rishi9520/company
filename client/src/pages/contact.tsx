@@ -67,25 +67,15 @@ export default function ContactPage() {
     e.preventDefault();
     
     try {
-      const submitData = new FormData();
-      submitData.append('access_key', '08eacc5d-5bd6-4286-91be-8711fadbae93');
-      submitData.append('name', `${formData.firstName} ${formData.lastName}`);
-      submitData.append('email', formData.email);
-      submitData.append('phone', formData.phone);
-      submitData.append('company', formData.company);
-      submitData.append('subject', formData.subject);
-      submitData.append('message', formData.message);
-      submitData.append('budget', formData.budget);
-      submitData.append('timeline', formData.timeline);
-
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        body: submitData
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
-
-      if (data.success) {
+      if (response.ok) {
         toast({
           title: "Message sent successfully! 🚀",
           description: "We'll get back to you within 24 hours.",
@@ -216,7 +206,7 @@ export default function ContactPage() {
                         placeholder="John"
                         value={formData.firstName}
                         onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                        className="form-field bg-muted/50 border-border text-foreground mt-2 h-12 rounded-xl transition-all duration-300 focus:border-primary focus:bg-muted placeholder:text-muted-foreground"
+                        className="form-field bg-muted/50 border-border text-foreground mt-2 h-12 rounded-xl transition-all duration-300 focus:border-primary focus:bg-muted"
                         data-testid="input-first-name"
                         required
                       />
@@ -229,7 +219,7 @@ export default function ContactPage() {
                         placeholder="Doe"
                         value={formData.lastName}
                         onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                        className="form-field bg-muted/50 border-border text-foreground mt-2 h-12 rounded-xl transition-all duration-300 focus:border-primary focus:bg-muted placeholder:text-muted-foreground"
+                        className="form-field bg-muted/50 border-border text-foreground mt-2 h-12 rounded-xl transition-all duration-300 focus:border-primary focus:bg-muted"
                         data-testid="input-last-name"
                         required
                       />
@@ -245,7 +235,7 @@ export default function ContactPage() {
                         placeholder="john@company.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="form-field bg-muted/50 border-border text-foreground mt-2 h-12 rounded-xl transition-all duration-300 focus:border-primary focus:bg-muted placeholder:text-muted-foreground"
+                        className="form-field bg-muted/50 border-border text-foreground mt-2 h-12 rounded-xl transition-all duration-300 focus:border-primary focus:bg-muted"
                         data-testid="input-email"
                         required
                       />
@@ -258,7 +248,7 @@ export default function ContactPage() {
                         placeholder="+91 98765 43210"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="form-field bg-muted/50 border-border text-foreground mt-2 h-12 rounded-xl transition-all duration-300 focus:border-primary focus:bg-muted placeholder:text-muted-foreground"
+                        className="form-field bg-muted/50 border-border text-foreground mt-2 h-12 rounded-xl transition-all duration-300 focus:border-primary focus:bg-muted"
                         data-testid="input-phone"
                       />
                     </FormField>
@@ -272,7 +262,7 @@ export default function ContactPage() {
                       placeholder="Your Company Name"
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="form-field bg-muted/50 border-border text-foreground mt-2 h-12 rounded-xl transition-all duration-300 focus:border-primary focus:bg-muted placeholder:text-muted-foreground"
+                      className="form-field bg-muted/50 border-border text-foreground mt-2 h-12 rounded-xl transition-all duration-300 focus:border-primary focus:bg-muted"
                       data-testid="input-company"
                     />
                   </FormField>
@@ -319,7 +309,7 @@ export default function ContactPage() {
                       placeholder="Tell us about your project requirements, goals, and any specific features you need..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="form-field bg-muted/50 border-border text-foreground mt-2 rounded-xl transition-all duration-300 focus:border-primary focus:bg-muted placeholder:text-muted-foreground"
+                      className="form-field bg-muted/50 border-border text-foreground mt-2 rounded-xl transition-all duration-300 focus:border-primary focus:bg-muted"
                       data-testid="textarea-message"
                       required
                     />

@@ -46,11 +46,10 @@ export default function CareersPage() {
   const handleInquirySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          access_key: '08eacc5d-5bd6-4286-91be-8711fadbae93',
           firstName: inquiryForm.name.split(' ')[0],
           lastName: inquiryForm.name.split(' ').slice(1).join(' ') || '',
           email: inquiryForm.email,
@@ -59,13 +58,9 @@ export default function CareersPage() {
         }),
       });
 
-      const result = await response.json();
-
-      if (result.success) {
+      if (response.ok) {
         alert('Message sent successfully! We will get back to you soon.');
         setInquiryForm({ name: '', email: '', subject: '', message: '' });
-      } else {
-        alert(`Error sending message: ${result.message}. Please try again.`);
       }
     } catch (error) {
       alert('Error sending message. Please try again.');
@@ -1038,7 +1033,7 @@ export default function CareersPage() {
                   <div className="grid md:grid-cols-2 gap-4">
                     <Input
                       placeholder="Your Name"
-                      className="bg-background/50 placeholder:text-muted-foreground"
+                      className="bg-background/50"
                       value={inquiryForm.name}
                       onChange={(e) => setInquiryForm({...inquiryForm, name: e.target.value})}
                       required
@@ -1047,7 +1042,7 @@ export default function CareersPage() {
                     <Input
                       type="email"
                       placeholder="Email Address"
-                      className="bg-background/50 placeholder:text-muted-foreground"
+                      className="bg-background/50"
                       value={inquiryForm.email}
                       onChange={(e) => setInquiryForm({...inquiryForm, email: e.target.value})}
                       required
@@ -1056,7 +1051,7 @@ export default function CareersPage() {
                   </div>
                   <Input
                     placeholder="Subject"
-                    className="bg-background/50 placeholder:text-muted-foreground"
+                    className="bg-background/50"
                     value={inquiryForm.subject}
                     onChange={(e) => setInquiryForm({...inquiryForm, subject: e.target.value})}
                     data-testid="input-subject"
@@ -1064,7 +1059,7 @@ export default function CareersPage() {
                   <Textarea
                     placeholder="Your Message"
                     rows={4}
-                    className="bg-background/50 placeholder:text-muted-foreground"
+                    className="bg-background/50"
                     value={inquiryForm.message}
                     onChange={(e) => setInquiryForm({...inquiryForm, message: e.target.value})}
                     required
