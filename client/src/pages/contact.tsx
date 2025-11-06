@@ -26,25 +26,6 @@ export default function ContactPage() {
 
   useEffect(() => {
     // Advanced floating elements for contact page
-    const createContactParticle = () => {
-      const icons = ['✉️', '📞', '🌐', '💼', '🚀', '⚡', '💡', '🎯'];
-      const particle = document.createElement('div');
-      particle.textContent = icons[Math.floor(Math.random() * icons.length)];
-      particle.className = 'fixed text-xl pointer-events-none z-0 animate-contact-float';
-      particle.style.left = Math.random() * window.innerWidth + 'px';
-      particle.style.top = Math.random() * window.innerHeight + 'px';
-      particle.style.animationDuration = `${6 + Math.random() * 8}s`;
-      particle.style.opacity = '0.6';
-      document.body.appendChild(particle);
-      
-      setTimeout(() => {
-        if (document.body.contains(particle)) {
-          document.body.removeChild(particle);
-        }
-      }, 14000);
-    };
-
-    const contactInterval = setInterval(createContactParticle, 500);
 
     // Enhanced form field animations
     const inputs = document.querySelectorAll('.form-field');
