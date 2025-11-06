@@ -927,58 +927,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
-      {/* Footer Section */}
-      <footer className="py-16 bg-background border-t border-muted/30">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-12">
-            {/* Logo and Description */}
-            <div className="col-span-1 md:col-span-2">
-              <img src={codicoreLogo} alt="CODICORE Logo" className="w-32 mb-4" />
-              <p className="text-muted-foreground text-sm mb-4">
-                CODICORE PRIVATE LIMITED: Simplifying the complex. Building intelligent software that transforms business chaos into harmony.
-              </p>
-              {/* Social Icons */}
-              <div className="flex space-x-4">
-                <a href="https://x.com/FirstOf60837" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                  <TwitterX className="w-6 h-6 text-muted-foreground hover:text-primary transition-colors" />
-                </a>
-                <a href="https://www.instagram.com/rishiagrawal45202/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                  <Instagram className="w-6 h-6 text-muted-foreground hover:text-primary transition-colors" />
-                </a>
-              </div>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h4 className="text-xl font-bold mb-6">Quick Links</h4>
-              <ul className="space-y-3 text-muted-foreground">
-                <li><a href="#home" className="hover:text-primary transition-colors">Home</a></li>
-                <li><a href="#about" className="hover:text-primary transition-colors">About Us</a></li>
-                <li><a href="#products" className="hover:text-primary transition-colors">Products</a></li>
-                <li><a href="#services" className="hover:text-primary transition-colors">Services</a></li>
-                <li><a href="#contact" className="hover:text-primary transition-colors">Contact</a></li>
-              </ul>
-            </div>
-
-            {/* Contact Information */}
-            <div>
-              <h4 className="text-xl font-bold mb-6">Contact Us</h4>
-              <div className="text-sm text-muted-foreground space-y-3">
-                <p>JAWAHAR BAJAR B11 BLOCK SADABAD HATHRAS 281306, UTTAR PRADESH</p>
-                <p><strong>Phone:</strong> <a href="tel:7599377142" className="hover:text-primary transition-colors">7599377142</a></p>
-                <p><strong>Alternate Phone:</strong> <a href="tel:7819914361" className="hover:text-primary transition-colors">7819914361</a></p>
-                <p><strong>Email:</strong> <a href="mailto:info@codicore.in" className="hover:text-primary transition-colors">info@codicore.in</a></p>
-              </div>
-            </div>
-          </div>
-
-          {/* Copyright */}
-          <div className="mt-12 pt-8 border-t border-muted/30 text-center text-muted-foreground text-sm">
-            © 2024 CODICORE PRIVATE LIMITED. All rights reserved.
-          </div>
-        </div>
-      </footer>
     </>
   );
 }
