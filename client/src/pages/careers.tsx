@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-import { useNavigate, useLocation } from 'wouter';
+import { useLocation } from 'wouter';
 import {
   Users, Target, Rocket, TrendingUp, Award, Trophy,
   Star, Heart, Zap, Globe, Shield, Sparkles,
@@ -29,8 +29,7 @@ import companyLogo from '@asset/logo_of_company-removebg-preview_1762392516625.p
 
 export default function CareersPage() {
   useLenis();
-  const navigate = useNavigate(); // Keep navigate for potential other uses, but use setLocation for specific buttons.
-  const setLocation = useLocation()[1]; // Get the setLocation function from useLocation.
+  const [, setLocation] = useLocation();
   const [activeTab, setActiveTab] = useState('culture');
   const [selectedDepartment, setSelectedDepartment] = useState('all');
   const [inquiryForm, setInquiryForm] = useState({
