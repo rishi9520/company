@@ -1,9 +1,8 @@
 import { motion } from 'framer-motion';
-import { SiMicrosoft, SiGoogle, SiAmazon, SiApple, SiMeta, SiNetflix, SiAdobe, SiSalesforce, SiIbm, SiOracle, SiSap, SiCisco } from 'react-icons/si';
+import { SiGoogle, SiAmazon, SiApple, SiMeta, SiNetflix, SiAdobe, SiSalesforce, SiOracle, SiSap, SiCisco, SiSpotify, SiSlack } from 'react-icons/si';
 
 export default function ClientLogos() {
   const clients = [
-    { name: 'Microsoft', icon: SiMicrosoft, color: 'text-blue-500' },
     { name: 'Google', icon: SiGoogle, color: 'text-red-500' },
     { name: 'Amazon', icon: SiAmazon, color: 'text-orange-500' },
     { name: 'Apple', icon: SiApple, color: 'text-gray-400' },
@@ -11,10 +10,11 @@ export default function ClientLogos() {
     { name: 'Netflix', icon: SiNetflix, color: 'text-red-600' },
     { name: 'Adobe', icon: SiAdobe, color: 'text-red-700' },
     { name: 'Salesforce', icon: SiSalesforce, color: 'text-blue-400' },
-    { name: 'IBM', icon: SiIbm, color: 'text-blue-700' },
     { name: 'Oracle', icon: SiOracle, color: 'text-red-800' },
     { name: 'SAP', icon: SiSap, color: 'text-blue-800' },
     { name: 'Cisco', icon: SiCisco, color: 'text-blue-500' },
+    { name: 'Spotify', icon: SiSpotify, color: 'text-green-500' },
+    { name: 'Slack', icon: SiSlack, color: 'text-purple-500' },
   ];
 
   return (

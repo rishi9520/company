@@ -16,7 +16,7 @@ import CaseStudies from '@/components/case-studies';
 
 export default function Home() {
   const [, setLocation] = useLocation();
-  const videoRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
 
@@ -25,7 +25,7 @@ export default function Home() {
     if (video) {
       video.muted = isMuted;
       if (isPlaying) {
-        video.play().catch(error => {
+        video.play().catch((error: Error) => {
           console.error("Error attempting to play video:", error);
         });
       } else {
@@ -42,29 +42,9 @@ export default function Home() {
     setIsMuted(!isMuted);
   };
 
-  const handleProductClick = (productName) => {
-    switch (productName) {
-      case 'SkoolHub 2.0':
-        setLocation('/products');
-        break;
-      case 'Retail Management':
-        setLocation('/retail-management');
-        break;
-      case 'Restaurant Solutions':
-        setLocation('/restaurant-solutions');
-        break;
-      case 'Custom Development':
-        setLocation('/custom-development');
-        break;
-      case 'AI Integration':
-        setLocation('/ai-integration');
-        break;
-      case 'Cloud Services':
-        setLocation('/cloud-services');
-        break;
-      default:
-        setLocation('/products'); // Default to products page if not found
-    }
+  const handleProductClick = (productName: string) => {
+    // All products now route to /products page since individual product pages don't exist
+    setLocation('/products');
   };
 
   return (
