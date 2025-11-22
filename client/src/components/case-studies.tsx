@@ -56,16 +56,16 @@ export default function CaseStudies() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-card/30 to-background relative overflow-hidden">
+    <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-card/30 to-background relative overflow-hidden">
       <div className="absolute inset-0 tech-grid opacity-20"></div>
 
-      <div className="container max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="text-center mb-10 sm:mb-12 md:mb-16">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-primary font-semibold mb-4 text-sm uppercase tracking-wider"
+            className="text-primary font-semibold mb-3 sm:mb-4 text-xs sm:text-sm uppercase tracking-wider"
           >
             Success Stories
           </motion.p>
@@ -74,7 +74,7 @@ export default function CaseStudies() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold gradient-text mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-3 sm:mb-4 px-4"
           >
             Case Studies
           </motion.h2>
@@ -83,13 +83,13 @@ export default function CaseStudies() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-gray-400 max-w-2xl mx-auto text-lg"
+            className="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg px-4"
           >
             Real projects, real results, real impact on businesses
           </motion.p>
         </div>
 
-        <div className="space-y-12">
+        <div className="space-y-6 sm:space-y-8 md:space-y-12">
           {caseStudies.map((study, index) => (
             <motion.div
               key={index}
@@ -99,10 +99,10 @@ export default function CaseStudies() {
               transition={{ delay: index * 0.1 }}
               data-testid={`case-study-${index}`}
             >
-              <Card className="glass-card rounded-2xl overflow-hidden hover-lift">
-                <div className="grid lg:grid-cols-2 gap-0">
+              <Card className="glass-card rounded-xl sm:rounded-2xl overflow-hidden hover-lift">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                   {/* Image Section */}
-                  <div className="relative h-80 lg:h-auto overflow-hidden">
+                  <div className="relative h-64 sm:h-80 lg:h-auto overflow-hidden">
                     <img
                       src={study.image}
                       alt={study.title}

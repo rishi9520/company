@@ -3,6 +3,7 @@ import { ArrowRight, Sparkles, Zap, Users, Clock, CheckCircle, Code, Smartphone,
 import { SiReact, SiDjango, SiPostgresql, SiPython, SiTypescript, SiTailwindcss } from 'react-icons/si';
 import { useLocation } from 'wouter';
 import { useRef, useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
 import codicoreLogo from '@asset/logo.png';
 import founderPhoto1 from '@assets/rishi-founder.jpg';
 import founderPhoto2 from '@assets/director.jpg';

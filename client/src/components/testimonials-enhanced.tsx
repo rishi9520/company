@@ -59,20 +59,20 @@ export default function TestimonialsEnhanced() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-background to-card/30 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+    <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-background to-card/30 relative overflow-hidden">
+      {/* Background decoration - Optimized for mobile */}
+      <div className="absolute inset-0 opacity-20 sm:opacity-30">
+        <div className="absolute top-10 sm:top-20 right-1/4 w-48 sm:w-96 h-48 sm:h-96 bg-secondary/10 rounded-full blur-2xl sm:blur-3xl"></div>
+        <div className="absolute bottom-10 sm:bottom-20 left-1/4 w-48 sm:w-96 h-48 sm:h-96 bg-primary/10 rounded-full blur-2xl sm:blur-3xl"></div>
       </div>
 
-      <div className="container max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="text-center mb-10 sm:mb-12 md:mb-16">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-primary font-semibold mb-4 text-sm uppercase tracking-wider"
+            className="text-primary font-semibold mb-3 sm:mb-4 text-xs sm:text-sm uppercase tracking-wider"
           >
             Client Testimonials
           </motion.p>
@@ -81,7 +81,7 @@ export default function TestimonialsEnhanced() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold gradient-text mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-3 sm:mb-4 px-4"
           >
             What Our Clients Say
           </motion.h2>
@@ -96,7 +96,7 @@ export default function TestimonialsEnhanced() {
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
@@ -106,9 +106,9 @@ export default function TestimonialsEnhanced() {
               transition={{ delay: index * 0.1 }}
               data-testid={`testimonial-${index}`}
             >
-              <Card className="glass-card rounded-2xl p-8 h-full flex flex-col hover-lift relative">
+              <Card className="glass-card rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 h-full flex flex-col hover-lift relative">
                 {/* Quote Icon */}
-                <Quote className="absolute top-4 right-4 w-12 h-12 text-primary/20" />
+                <Quote className="absolute top-3 right-3 sm:top-4 sm:right-4 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-primary/20" />
 
                 {/* Rating */}
                 <div className="flex gap-1 mb-6">
