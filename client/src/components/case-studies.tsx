@@ -99,7 +99,7 @@ export default function CaseStudies() {
               transition={{ delay: index * 0.1 }}
               data-testid={`case-study-${index}`}
             >
-              <Card className="glass-card rounded-xl sm:rounded-2xl overflow-hidden hover-lift">
+              <Card className="glass-card rounded-xl sm:rounded-2xl overflow-hidden md:hover-lift">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                   {/* Image Section */}
                   <div className="relative h-64 sm:h-80 lg:h-auto overflow-hidden">

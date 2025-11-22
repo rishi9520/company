@@ -58,15 +58,21 @@ export default function Home() {
 
       {/* Hero Section - Mobile-First Optimized */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-background via-background to-muted/20 pt-20 sm:pt-24">
-        {/* Animated Background Elements - Optimized for mobile */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-40 sm:w-72 h-40 sm:h-72 bg-primary/20 rounded-full blur-2xl sm:blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-48 sm:w-96 h-48 sm:h-96 bg-secondary/20 rounded-full blur-2xl sm:blur-3xl animate-pulse delay-700"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 sm:w-[600px] h-80 sm:h-[600px] bg-accent/10 rounded-full blur-2xl sm:blur-3xl animate-pulse delay-1000"></div>
+        {/* Animated Background Elements - Disabled on mobile for performance */}
+        <div className="absolute inset-0 overflow-hidden motion-safe:md:block hidden md:block">
+          <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-40 sm:w-72 h-40 sm:h-72 bg-primary/20 rounded-full blur-2xl sm:blur-3xl md:animate-pulse"></div>
+          <div className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-48 sm:w-96 h-48 sm:h-96 bg-secondary/20 rounded-full blur-2xl sm:blur-3xl md:animate-pulse delay-700"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 sm:w-[600px] h-80 sm:h-[600px] bg-accent/10 rounded-full blur-2xl sm:blur-3xl md:animate-pulse delay-1000"></div>
+        </div>
+        
+        {/* Static background for mobile - Better performance */}
+        <div className="absolute inset-0 overflow-hidden md:hidden">
+          <div className="absolute top-10 left-5 w-40 h-40 bg-primary/15 rounded-full blur-2xl"></div>
+          <div className="absolute bottom-10 right-5 w-48 h-48 bg-secondary/15 rounded-full blur-2xl"></div>
         </div>
 
-        {/* Tech Grid Background - Hidden on small mobile */}
-        <div className="absolute inset-0 tech-grid opacity-20 sm:opacity-30"></div>
+        {/* Tech Grid Background - Reduced opacity on mobile */}
+        <div className="absolute inset-0 tech-grid opacity-10 md:opacity-30"></div>
 
         <div className="container mx-auto px-4 sm:px-6 text-center relative z-10" data-testid="hero-section">
           <motion.div 

@@ -38,11 +38,11 @@ function AnimatedStat({ icon: Icon, value, suffix, label, delay }: StatProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay }}
-      className="glass-card rounded-2xl p-6 sm:p-8 text-center hover-lift"
+      className="glass-card rounded-2xl p-6 sm:p-8 text-center md:hover-lift"
       data-testid={`stat-${label.toLowerCase().replace(/\s/g, '-')}`}
     >
       <div className="relative inline-block mb-3 sm:mb-4">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full blur-lg opacity-50"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full blur-lg opacity-30 md:opacity-50"></div>
         <div className="relative bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full p-3 sm:p-4">
           <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
         </div>

@@ -106,7 +106,7 @@ export default function TestimonialsEnhanced() {
               transition={{ delay: index * 0.1 }}
               data-testid={`testimonial-${index}`}
             >
-              <Card className="glass-card rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 h-full flex flex-col hover-lift relative">
+              <Card className="glass-card rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 h-full flex flex-col md:hover-lift relative">
                 {/* Quote Icon */}
                 <Quote className="absolute top-3 right-3 sm:top-4 sm:right-4 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-primary/20" />
 

@@ -462,3 +462,36 @@
     transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
+
+/* Mobile Performance Optimization - Disable expensive animations on small screens */
+@media (max-width: 767px) {
+  .animate-pulse,
+  .animate-float,
+  .animate-glow,
+  .hover-lift {
+    animation: none !important;
+    transform: none !important;
+  }
+  
+  /* Faster, simpler transitions on mobile */
+  * {
+    transition-duration: 150ms !important;
+  }
+  
+  /* Disable blur effects on mobile for better performance */
+  .blur-3xl, .blur-2xl {
+    filter: blur(20px) !important;
+  }
+}
+
+/* Respect user's motion preferences - Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
