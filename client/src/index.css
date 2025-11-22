@@ -93,6 +93,21 @@
     box-sizing: border-box;
   }
 
+  /* Mobile-first body styles */
+  body {
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  /* Prevent horizontal scroll on mobile */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
   /* Lazy Loading Optimization */
   img[loading="lazy"] {
     opacity: 0;
@@ -121,6 +136,21 @@
     outline: 2px solid hsl(var(--primary));
     outline-offset: 2px;
     border-radius: 4px;
+  }
+
+  /* Mobile touch target minimum size */
+  button, a, input, select, textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Disable animations on mobile if preferred */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 
   /* Hide Scrollbar */

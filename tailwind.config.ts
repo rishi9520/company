@@ -5,6 +5,29 @@ export default {
   content: ["./client/index.html", "./client/src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      // Mobile-first responsive typography
+      fontSize: {
+        'xs': ['clamp(0.75rem, 1.5vw + 0.5rem, 0.875rem)', { lineHeight: '1.5' }],
+        'sm': ['clamp(0.875rem, 1.8vw + 0.5rem, 1rem)', { lineHeight: '1.5' }],
+        'base': ['clamp(1rem, 2.2vw + 0.2rem, 1.125rem)', { lineHeight: '1.6' }],
+        'lg': ['clamp(1.125rem, 2.5vw + 0.3rem, 1.25rem)', { lineHeight: '1.6' }],
+        'xl': ['clamp(1.25rem, 3vw + 0.4rem, 1.5rem)', { lineHeight: '1.5' }],
+        '2xl': ['clamp(1.5rem, 3.5vw + 0.5rem, 2rem)', { lineHeight: '1.4' }],
+        '3xl': ['clamp(1.875rem, 4vw + 0.75rem, 2.5rem)', { lineHeight: '1.3' }],
+        '4xl': ['clamp(2.25rem, 5vw + 1rem, 3.5rem)', { lineHeight: '1.2' }],
+        '5xl': ['clamp(2.5rem, 6vw + 1rem, 4rem)', { lineHeight: '1.1' }],
+        '6xl': ['clamp(3rem, 7vw + 1.5rem, 5rem)', { lineHeight: '1' }],
+        '7xl': ['clamp(3.5rem, 8vw + 2rem, 6rem)', { lineHeight: '1' }],
+        '8xl': ['clamp(4rem, 10vw + 2rem, 7rem)', { lineHeight: '1' }],
+      },
+      // Mobile-first spacing scale
+      spacing: {
+        'section-mobile': 'clamp(3rem, 6vw, 4rem)',
+        'section-tablet': 'clamp(4rem, 8vw, 5rem)',
+        'section-desktop': 'clamp(5rem, 10vw, 6rem)',
+        'container-mobile': 'clamp(1rem, 4vw, 1.5rem)',
+        'container-desktop': 'clamp(1.5rem, 5vw, 2rem)',
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

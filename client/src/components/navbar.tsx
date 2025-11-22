@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Home, Info, Package, Cpu, Phone, Users, Sparkles } from "lucide-react";
+import { Menu, X, Home, Info, Package, Cpu, Phone, Users } from "lucide-react";
 import { useLocation, Link } from "wouter";
+import { Button } from "@/components/ui/button";
 import logoImage from "@asset/logo.png";
 
 export default function Navbar() {
@@ -11,7 +12,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrolled = window.scrollY > 20;
+      const scrolled = window.scrollY > 10;
       setIsScrolled(scrolled);
       
       const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -22,6 +23,23 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
 
   const navLinks = [
     { href: "/", label: "Home", icon: Home },
@@ -45,36 +63,28 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${
           isScrolled
-            ? "backdrop-blur-xl bg-background/80 border-b border-white/10 shadow-2xl shadow-black/20 h-[72px]"
-            : "bg-transparent h-[80px]"
+            ? "backdrop-blur-xl bg-background/90 border-b border-white/10 shadow-xl shadow-black/20"
+            : "bg-transparent"
         }`}
       >
-        <div className="container max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-18 md:h-20 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 cursor-pointer group relative" data-testid="link-home-logo">
-            <div className="relative">
-              {/* Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-2xl blur-lg opacity-0 group-hover:opacity-70 transition-smooth"></div>
-              
-              {/* Logo Container */}
-              <div className="relative w-14 h-14 rounded-2xl flex items-center justify-center overflow-hidden transition-smooth group-hover:scale-110 group-hover:rotate-6 bg-gradient-to-br from-primary/15 to-secondary/15 backdrop-blur-sm border border-white/10">
-                <img
-                  src={logoImage}
-                  alt="CODICORE Logo"
-                  className="w-full h-full object-contain p-2"
-                />
-              </div>
-              
-              {/* Sparkle Effect */}
-              <Sparkles className="absolute -top-1 -right-1 w-4 h-4 text-primary opacity-0 group-hover:opacity-100 transition-smooth animate-pulse" />
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 cursor-pointer group relative" data-testid="link-home-logo">
+            {/* Logo Container - Mobile Optimized */}
+            <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center overflow-hidden transition-smooth group-hover:scale-105 bg-gradient-to-br from-primary/15 to-secondary/15 backdrop-blur-sm border border-white/10">
+              <img
+                src={logoImage}
+                alt="CODICORE Logo"
+                className="w-full h-full object-contain p-1.5 sm:p-2"
+              />
             </div>
             
-            {/* Brand Name */}
+            {/* Brand Name - Responsive */}
             <div className="flex flex-col">
-              <span className="text-xl font-bold gradient-text tracking-tight hidden sm:block">
+              <span className="text-base sm:text-lg md:text-xl font-bold gradient-text tracking-tight">
                 CODICORE
               </span>
-              <span className="text-[9px] text-muted-foreground tracking-[0.2em] uppercase hidden lg:block group-hover:text-primary/70 transition-smooth">
+              <span className="text-[8px] sm:text-[9px] text-muted-foreground tracking-[0.2em] uppercase hidden sm:block group-hover:text-primary/70 transition-smooth">
                 Private Limited
               </span>
             </div>

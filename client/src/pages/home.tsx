@@ -55,28 +55,28 @@ export default function Home() {
         keywords="software development, web development, mobile apps, AI integration, cloud services, SkoolHub, retail management, restaurant solutions, custom development, CODICORE"
       />
 
-      {/* Hero Section - Animated Logo & Tagline */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-background via-background to-muted/20">
-        {/* Animated Background Elements */}
+      {/* Hero Section - Mobile-First Optimized */}
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-background via-background to-muted/20 pt-20 sm:pt-24">
+        {/* Animated Background Elements - Optimized for mobile */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse delay-700"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-40 sm:w-72 h-40 sm:h-72 bg-primary/20 rounded-full blur-2xl sm:blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-48 sm:w-96 h-48 sm:h-96 bg-secondary/20 rounded-full blur-2xl sm:blur-3xl animate-pulse delay-700"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 sm:w-[600px] h-80 sm:h-[600px] bg-accent/10 rounded-full blur-2xl sm:blur-3xl animate-pulse delay-1000"></div>
         </div>
 
-        {/* Tech Grid Background */}
-        <div className="absolute inset-0 tech-grid opacity-30"></div>
+        {/* Tech Grid Background - Hidden on small mobile */}
+        <div className="absolute inset-0 tech-grid opacity-20 sm:opacity-30"></div>
 
-        <div className="container mx-auto px-6 text-center relative z-10" data-testid="hero-section">
+        <div className="container mx-auto px-4 sm:px-6 text-center relative z-10" data-testid="hero-section">
           <motion.div 
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="logo-container mb-8"
+            className="logo-container mb-6 sm:mb-8"
           >
             <div className="logo-glow"></div>
-            <div className="w-32 h-32 md:w-48 md:h-48 mx-auto rounded-3xl flex items-center justify-center relative z-10 overflow-hidden" data-testid="img-logo">
-              <img src={codicoreLogo} alt="CODICORE Logo" className="w-full h-full object-contain" />
+            <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mx-auto rounded-2xl sm:rounded-3xl flex items-center justify-center relative z-10 overflow-hidden" data-testid="img-logo">
+              <img src={codicoreLogo} alt="CODICORE Logo" className="w-full h-full object-contain p-2" />
             </div>
           </motion.div>
 
@@ -84,7 +84,7 @@ export default function Home() {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-5xl md:text-7xl font-bold mb-6 gradient-text"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 gradient-text px-2"
             data-testid="text-company-name"
           >
             CODICORE
@@ -94,7 +94,7 @@ export default function Home() {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-xl md:text-2xl text-foreground/80 mb-4"
+            className="text-lg sm:text-xl md:text-2xl text-foreground/80 mb-3 sm:mb-4 px-4"
             data-testid="text-tagline"
           >
             <TypingText text="Where Ideas Meet Code" speed={80} delay={1500} />
@@ -104,7 +104,7 @@ export default function Home() {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.8 }}
-            className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto"
+            className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 sm:mb-12 max-w-2xl lg:max-w-3xl mx-auto px-4"
             data-testid="text-vision"
           >
             Simplifying the complex. Building intelligent software that transforms business chaos into harmony.
@@ -114,24 +114,25 @@ export default function Home() {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.9, duration: 0.8 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 px-4 max-w-lg mx-auto"
           >
-            <button 
+            <Button
               onClick={() => handleProductClick('SkoolHub 2.0')}
-              className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-xl font-bold hover-lift transition-all duration-300 hover:scale-105 flex items-center space-x-2 shadow-lg shadow-primary/50"
+              className="px-6 sm:px-8 py-6 sm:py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-xl font-bold hover-lift transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2 shadow-lg shadow-primary/50 text-base sm:text-base w-full sm:w-auto"
               data-testid="button-explore-products"
             >
               <span>Explore SkoolHub 2.0</span>
-              <ArrowRight size={20} />
-            </button>
-            <button 
+              <ArrowRight className="w-5 h-5" />
+            </Button>
+            <Button
               onClick={() => setLocation('/contact')}
-              className="px-8 py-4 glass-morphism text-foreground rounded-xl font-bold hover-lift transition-all duration-300 hover:scale-105 flex items-center space-x-2"
+              variant="outline"
+              className="px-6 sm:px-8 py-6 sm:py-4 glass-morphism text-foreground rounded-xl font-bold hover-lift transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2 text-base sm:text-base w-full sm:w-auto"
               data-testid="button-contact"
             >
-              <Sparkles size={20} />
+              <Sparkles className="w-5 h-5" />
               <span>Get Started</span>
-            </button>
+            </Button>
           </motion.div>
         </div>
       </section>
