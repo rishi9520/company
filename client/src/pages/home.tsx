@@ -6,10 +6,7 @@ import { useRef, useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import codicoreLogo from '@asset/logo.png';
 import TypingText from '@/components/typing-text';
-import LiveStats from '@/components/live-stats';
 import SEO from '@/components/seo';
-import ClientLogos from '@/components/client-logos';
-import ProfessionalStats from '@/components/professional-stats';
 import TestimonialsEnhanced from '@/components/testimonials-enhanced';
 import CaseStudies from '@/components/case-studies';
 
@@ -761,9 +758,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Live Stats Section */}
-      <LiveStats />
-
       {/* Vision & Future Section */}
       <section className="py-20 md:py-32 bg-muted/30 relative overflow-hidden" data-testid="section-vision">
         <div className="container mx-auto px-6">
@@ -799,12 +793,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
-      {/* Client Logos Section */}
-      <ClientLogos />
-
-      {/* Professional Stats Section */}
-      <ProfessionalStats />
 
       {/* Case Studies Section */}
       <CaseStudies />
