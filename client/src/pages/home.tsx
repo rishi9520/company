@@ -5,8 +5,6 @@ import { useLocation } from 'wouter';
 import { useRef, useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import codicoreLogo from '@asset/logo.png';
-import founderPhoto1 from '@assets/rishi-founder.jpg';
-import founderPhoto2 from '@assets/director.jpg';
 import TypingText from '@/components/typing-text';
 import LiveStats from '@/components/live-stats';
 import SEO from '@/components/seo';
@@ -144,89 +142,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Young Genius Founder Section */}
-      <section className="py-20 md:py-32 bg-muted/30 relative overflow-hidden" data-testid="section-founder">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Text Content */}
-            <motion.div
-              initial={{ x: -100, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="order-2 md:order-1"
-            >
-              <div className="inline-flex items-center space-x-2 bg-primary/20 text-primary px-4 py-2 rounded-full mb-6" data-testid="badge-founder">
-                <Award size={20} />
-                <span className="font-semibold">Founded by a 17-Year-Old Visionary</span>
-              </div>
-
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text" data-testid="text-founder-name">
-                Rishi Agrawal
-              </h2>
-
-              <p className="text-xl text-foreground/80 mb-4" data-testid="text-founder-age">
-                <strong>17 years old</strong> • 12th Grade Student • Tech Entrepreneur
-              </p>
-
-              <p className="text-lg text-muted-foreground mb-6" data-testid="text-founder-story">
-                While most teenagers are preparing for board exams, Rishi is building the future of EdTech. 
-                At just 17, he founded and legally incorporated <strong>CODICORE PRIVATE LIMITED</strong>, 
-                a company recognized by <strong>Startup India</strong>.
-              </p>
-
-              <p className="text-lg text-muted-foreground mb-6">
-                His flagship product, <strong>SkoolHub 2.0</strong>, is revolutionizing how schools manage teacher 
-                arrangements and attendance through AI-powered automation.
-              </p>
-
-              <div className="flex flex-wrap gap-3">
-                <div className="flex items-center space-x-2 bg-accent/20 text-secondary px-4 py-2 rounded-lg" data-testid="badge-achievement-1">
-                  <CheckCircle size={18} />
-                  <span>Company Incorporated at 17</span>
-                </div>
-                <div className="flex items-center space-x-2 bg-secondary/20 text-secondary px-4 py-2 rounded-lg" data-testid="badge-achievement-2">
-                  <CheckCircle size={18} />
-                  <span>Startup India Recognized</span>
-                </div>
-                <div className="flex items-center space-x-2 bg-primary/20 text-primary px-4 py-2 rounded-lg" data-testid="badge-achievement-3">
-                  <CheckCircle size={18} />
-                  <span>AI Product Live</span>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Founder Images */}
-            <motion.div
-              initial={{ x: 100, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="order-1 md:order-2"
-            >
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-3xl blur-2xl opacity-30"></div>
-                <div className="relative grid grid-cols-2 gap-4">
-                  <div className="glass-morphism p-2 rounded-2xl hover-lift" data-testid="img-founder-1">
-                    <img 
-                      src={founderPhoto1} 
-                      alt="Rishi Agrawal - Founder" 
-                      className="w-full h-64 object-cover rounded-xl"
-                    />
-                  </div>
-                  <div className="glass-morphism p-2 rounded-2xl hover-lift mt-8" data-testid="img-founder-2">
-                    <img 
-                      src={founderPhoto2} 
-                      alt="Rishi Agrawal" 
-                      className="w-full h-64 object-cover rounded-xl"
-                    />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Company Credentials Section */}
       <section className="py-20 md:py-32 relative overflow-hidden" data-testid="section-credentials">

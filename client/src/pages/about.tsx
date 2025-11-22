@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Users, Award, Target, Eye, Lightbulb, Zap } from 'lucide-react';
+import { Users, Award, Target, Eye, Lightbulb, Zap, CheckCircle } from 'lucide-react';
 import { useLenis } from '@/hooks/use-lenis';
 
 // Framer Motion Animation Variants (isse code clean rehta hai)
@@ -136,40 +136,90 @@ export default function AboutPage() {
           </div>
 
           {/* === Meet the Founder === */}
-          <div className="glass-morphism rounded-3xl p-10 md:p-16 mb-28">
-            <div className="grid lg:grid-cols-3 gap-12 items-center">
-              <motion.div 
-                className="lg:col-span-1"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <div className="relative mb-6 mx-auto w-48 h-48">
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full animate-pulse-slow opacity-50"></div>
-                  <img 
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300"
-                    alt="Rishi Agrawal, Founder & CEO"
-                    className="relative w-full h-full rounded-full object-cover border-4 border-background"
-                  />
-                </div>
-              </motion.div>
-              <motion.div 
-                className="lg:col-span-2"
-                initial={{ opacity: 0, x: 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 1, delay: 0.2 }}
-              >
-                <h3 className="text-2xl font-bold text-primary mb-2">The Mind Behind The Code</h3>
-                <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Rishi Agrawal</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                  At just 17, Rishi founded Codiceore with a singular vision: to solve India's unique challenges with home-grown technology. As a self-taught programmer and a student himself, he experienced the daily operational hurdles in schools firsthand, which led to the creation of SkoolHub 2.0.
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed italic">
-                  "I believe code is the most powerful tool of our generation. My goal is not just to build a company, but to build solutions that empower our nation."
-                </p>
-              </motion.div>
+          <div className="mb-28">
+            <motion.h2 className="text-4xl font-bold text-center mb-16 gradient-text" {...fadeInUp} viewport={{ once: true }}>
+              Meet Our Founder
+            </motion.h2>
+            
+            <div className="glass-morphism rounded-3xl p-10 md:p-16 mb-12">
+              <div className="grid lg:grid-cols-3 gap-12 items-center">
+                <motion.div 
+                  className="lg:col-span-1"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-3xl blur-2xl opacity-30"></div>
+                    <div className="relative grid grid-cols-2 gap-4">
+                      <div className="glass-morphism p-2 rounded-2xl hover-lift">
+                        <img 
+                          src="/src/assets/rishi-founder.jpg" 
+                          alt="Rishi Agrawal - Founder" 
+                          className="w-full h-64 object-cover rounded-xl"
+                        />
+                      </div>
+                      <div className="glass-morphism p-2 rounded-2xl hover-lift mt-8">
+                        <img 
+                          src="/src/assets/director.jpg" 
+                          alt="Rishi Agrawal" 
+                          className="w-full h-64 object-cover rounded-xl"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+                <motion.div 
+                  className="lg:col-span-2"
+                  initial={{ opacity: 0, x: 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 1, delay: 0.2 }}
+                >
+                  <div className="inline-flex items-center space-x-2 bg-primary/20 text-primary px-4 py-2 rounded-full mb-6">
+                    <Award size={20} />
+                    <span className="font-semibold">Founded by a 17-Year-Old Visionary</span>
+                  </div>
+                  
+                  <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Rishi Agrawal</h2>
+                  
+                  <p className="text-xl text-foreground/80 mb-4">
+                    <strong>17 years old</strong> • 12th Grade Student • Tech Entrepreneur
+                  </p>
+                  
+                  <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+                    While most teenagers are preparing for board exams, Rishi is building the future of EdTech. 
+                    At just 17, he founded and legally incorporated <strong>CODICORE PRIVATE LIMITED</strong>, 
+                    a company recognized by <strong>Startup India</strong>.
+                  </p>
+                  
+                  <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                    His flagship product, <strong>SkoolHub 2.0</strong>, is revolutionizing how schools manage teacher 
+                    arrangements and attendance through AI-powered automation.
+                  </p>
+                  
+                  <p className="text-lg text-muted-foreground leading-relaxed italic mb-6">
+                    "I believe code is the most powerful tool of our generation. My goal is not just to build a company, 
+                    but to build solutions that empower our nation."
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-3">
+                    <div className="flex items-center space-x-2 bg-accent/20 text-secondary px-4 py-2 rounded-lg">
+                      <CheckCircle size={18} />
+                      <span>Company Incorporated at 17</span>
+                    </div>
+                    <div className="flex items-center space-x-2 bg-secondary/20 text-secondary px-4 py-2 rounded-lg">
+                      <CheckCircle size={18} />
+                      <span>Startup India Recognized</span>
+                    </div>
+                    <div className="flex items-center space-x-2 bg-primary/20 text-primary px-4 py-2 rounded-lg">
+                      <CheckCircle size={18} />
+                      <span>AI Product Live</span>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
             </div>
           </div>
           

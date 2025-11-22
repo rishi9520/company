@@ -38,21 +38,6 @@ export default function CaseStudies() {
       duration: '6 months',
       impact: 'Integrated POS systems across all locations with real-time inventory sync, predictive analytics for demand forecasting, and automated reordering.',
     },
-    {
-      title: 'AI-Powered Restaurant Analytics',
-      client: 'Gourmet Restaurant Group',
-      category: 'Hospitality & AI',
-      image: projectImage3,
-      description: 'Smart restaurant management with AI-driven insights for 25 restaurants',
-      results: [
-        { metric: '50%', label: 'Faster Table Turnover' },
-        { metric: '35%', label: 'Reduction in Food Waste' },
-        { metric: '4.8★', label: 'Average Customer Rating' },
-      ],
-      technologies: ['React', 'Python', 'TensorFlow', 'MongoDB'],
-      duration: '5 months',
-      impact: 'Implemented AI-based demand prediction, automated kitchen management, and customer preference analysis to optimize operations and enhance dining experience.',
-    },
   ];
 
   return (
