@@ -8,6 +8,11 @@ import founderPhoto1 from '@assets/rishi-founder.jpg';
 import founderPhoto2 from '@assets/director.jpg';
 import TypingText from '@/components/typing-text';
 import LiveStats from '@/components/live-stats';
+import SEO from '@/components/seo';
+import ClientLogos from '@/components/client-logos';
+import ProfessionalStats from '@/components/professional-stats';
+import TestimonialsEnhanced from '@/components/testimonials-enhanced';
+import CaseStudies from '@/components/case-studies';
 
 export default function Home() {
   const [, setLocation] = useLocation();
@@ -64,6 +69,12 @@ export default function Home() {
 
   return (
     <>
+      <SEO
+        title="Home - Leading Software Development Company"
+        description="CODICORE Private Limited - Transforming businesses with innovative software solutions. SkoolHub 2.0, Retail Management, AI Integration, and Custom Development Services. Trusted by 500+ companies worldwide."
+        keywords="software development, web development, mobile apps, AI integration, cloud services, SkoolHub, retail management, restaurant solutions, custom development, CODICORE"
+      />
+
       {/* Hero Section - Animated Logo & Tagline */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-background via-background to-muted/20">
         {/* Animated Background Elements */}
@@ -884,6 +895,18 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* Client Logos Section */}
+      <ClientLogos />
+
+      {/* Professional Stats Section */}
+      <ProfessionalStats />
+
+      {/* Case Studies Section */}
+      <CaseStudies />
+
+      {/* Testimonials Section */}
+      <TestimonialsEnhanced />
 
       {/* CTA Section */}
       <section className="py-20 md:py-32 relative overflow-hidden" data-testid="section-cta">
